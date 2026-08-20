@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Passengers | TransitPro</title>
+
+    <link
+        rel="stylesheet"
+        href="css/passengers.css"
+    >
+
+</head>
+
+
+<body>
+
+    <!-- =========================================
+         PAGE
+    ========================================== -->
+
+    <div class="passengers-page">
+
+
+        <!-- =====================================
+             HEADER
+        ====================================== -->
+        <button
+    type="button"
+    class="back-button"
+    onclick="history.back()"
+>
+    ← Back
+</button>
+
+        <header class="page-header">
+
+            <div>
+
+                <h1>
+                    Passengers
+                </h1>
+
+                <p>
+                    Manage passengers and their information
+                </p>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="add-passenger-btn"
+                id="openAddPassenger"
+            >
+
+                <span>+</span>
+
+                Add Passenger
+
+            </button>
+
+        </header>
+
+
+
+        <!-- =====================================
+             STATISTICS
+        ====================================== -->
+
+        <section class="passenger-stats">
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    👥
+                </div>
+
+                <div>
+
+                    <span>
+                        Total Passengers
+                    </span>
+
+                    <strong id="totalPassengers">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    📞
+                </div>
+
+                <div>
+
+                    <span>
+                        With Phone
+                    </span>
+
+                    <strong id="passengersWithPhone">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    ✉️
+                </div>
+
+                <div>
+
+                    <span>
+                        With Email
+                    </span>
+
+                    <strong id="passengersWithEmail">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =====================================
+             SEARCH / FILTER
+        ====================================== -->
+
+        <section class="passenger-toolbar">
+
+
+            <div class="search-box">
+
+                <span>
+                    🔍
+                </span>
+
+                <input
+                    type="text"
+                    id="searchPassenger"
+                    placeholder="Search passenger..."
+                    autocomplete="off"
+                >
+
+            </div>
+
+
+            <button
+                type="button"
+                class="refresh-btn"
+                id="refreshPassengers"
+            >
+
+                ↻
+
+                Refresh
+
+            </button>
+
+
+        </section>
+
+
+
+        <!-- =====================================
+             TABLE
+        ====================================== -->
+
+        <section class="passenger-table-card">
+
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                #
+                            </th>
+
+                            <th>
+                                Passenger
+                            </th>
+
+                            <th>
+                                Phone
+                            </th>
+
+                            <th>
+                                Email
+                            </th>
+
+                            <th>
+                                Address
+                            </th>
+
+                            <th>
+                                Emergency Contact
+                            </th>
+
+                            <th>
+                                Created
+                            </th>
+
+                            <th>
+                                Actions
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="passengersTableBody">
+
+                        <tr>
+
+                            <td
+                                colspan="8"
+                                class="loading-cell"
+                            >
+
+                                Loading passengers...
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+        </section>
+
+
+    </div>
+
+
+
+    <!-- =========================================
+         ADD PASSENGER MODAL
+    ========================================== -->
+
+    <div
+        class="modal-overlay"
+        id="passengerModal"
+    >
+
+        <div class="passenger-modal">
+
+
+            <div class="modal-header">
+
+                <div>
+
+                    <h2>
+                        Add New Passenger
+                    </h2>
+
+                    <p>
+                        Enter passenger information
+                    </p>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="close-modal"
+                    id="closePassengerModal"
+                >
+
+                    ×
+
+                </button>
+
+            </div>
+
+
+
+            <!-- =================================
+                 FORM
+            ================================== -->
+
+            <form
+                id="passengerForm"
+            >
+
+
+                <div class="form-grid">
+
+
+                    <div class="form-group">
+
+                        <label for="fullName">
+                            Full Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="fullName"
+                            name="full_name"
+                            placeholder="Enter full name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="phone">
+                            Phone Number
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="phone"
+                            name="phone"
+                            placeholder="08012345678"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="email">
+                            Email
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="passenger@example.com"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="address">
+                            Address
+                        </label>
+
+                        <input
+                            type="text"
+                            id="address"
+                            name="address"
+                            placeholder="Enter address"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="emergencyContact">
+                            Emergency Contact
+                        </label>
+
+                        <input
+                            type="text"
+                            id="emergencyContact"
+                            name="emergency_contact"
+                            placeholder="Emergency contact name"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="emergencyPhone">
+                            Emergency Phone
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="emergencyPhone"
+                            name="emergency_phone"
+                            placeholder="08012345678"
+                        >
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div
+                    class="form-message"
+                    id="formMessage"
+                ></div>
+
+
+
+                <div class="modal-actions">
+
+                    <button
+                        type="button"
+                        class="cancel-btn"
+                        id="cancelPassenger"
+                    >
+
+                        Cancel
+
+                    </button>
+
+
+                    <button
+                        type="submit"
+                        class="save-btn"
+                        id="savePassenger"
+                    >
+
+                        Create Passenger
+
+                    </button>
+
+                </div>
+
+
+            </form>
+
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+    <!-- =========================================
+     EDIT PASSENGER MODAL
+========================================= -->
+
+<div
+    class="modal-overlay"
+    id="editPassengerModal"
+>
+
+    <div class="passenger-modal">
+
+        <!-- MODAL HEADER -->
+
+        <div class="modal-header">
+
+            <div>
+
+                <h2>
+                    Edit Passenger
+                </h2>
+
+                <p>
+                    Update passenger information
+                </p>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="close-modal"
+                id="closeEditPassengerModal"
+            >
+
+                ×
+
+            </button>
+
+        </div>
+
+
+        <!-- FORM -->
+
+        <form id="editPassengerForm">
+
+            <div class="form-grid">
+
+
+                <!-- FULL NAME -->
+
+                <div class="form-group">
+
+                    <label for="editFullName">
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="editFullName"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- PHONE -->
+
+                <div class="form-group">
+
+                    <label for="editPhone">
+                        Phone Number
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="editPhone"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- EMAIL -->
+
+                <div class="form-group">
+
+                    <label for="editEmail">
+                        Email
+                    </label>
+
+                    <input
+                        type="email"
+                        id="editEmail"
+                    >
+
+                </div>
+
+
+                <!-- ADDRESS -->
+
+                <div class="form-group">
+
+                    <label for="editAddress">
+                        Address
+                    </label>
+
+                    <input
+                        type="text"
+                        id="editAddress"
+                    >
+
+                </div>
+
+
+                <!-- EMERGENCY CONTACT -->
+
+                <div class="form-group">
+
+                    <label for="editEmergencyContact">
+                        Emergency Contact
+                    </label>
+
+                    <input
+                        type="text"
+                        id="editEmergencyContact"
+                    >
+
+                </div>
+
+
+                <!-- EMERGENCY PHONE -->
+
+                <div class="form-group">
+
+                    <label for="editEmergencyPhone">
+                        Emergency Phone
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="editEmergencyPhone"
+                    >
+
+                </div>
+
+
+            </div>
+
+
+            <!-- MESSAGE -->
+
+            <div
+                class="form-message"
+                id="editFormMessage"
+            ></div>
+
+
+            <!-- ACTIONS -->
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    class="cancel-btn"
+                    id="cancelEditPassenger"
+                >
+
+                    Cancel
+
+                </button>
+
+
+                <button
+                    type="submit"
+                    class="save-btn"
+                    id="updatePassengerButton"
+                >
+
+                    Save Changes
+
+                </button>
+
+            </div>
+
+
+        </form>
+
+    </div>
+
+</div>
+
+    <script src="js/passengers.js"></script>
+
+</body>
+
+</html>

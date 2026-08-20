@@ -1,0 +1,1502 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Bookings | TransitPro</title>
+
+    <link
+        rel="stylesheet"
+        href="css/bookings.css"
+    >
+
+    <!-- =====================================================
+         BOOKING MODAL STYLES
+         These styles are intentionally kept here so we don't
+         disturb your existing bookings.css.
+    ====================================================== -->
+
+    <style>
+
+        /* =====================================================
+           MODAL BACKDROP
+        ====================================================== */
+
+        .booking-modal {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.68);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 24px;
+
+            z-index: 9999;
+
+            opacity: 0;
+            visibility: hidden;
+
+            transition:
+                opacity 0.25s ease,
+                visibility 0.25s ease;
+
+            backdrop-filter: blur(6px);
+        }
+
+        .booking-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+
+        /* =====================================================
+           MODAL BOX
+        ====================================================== */
+
+        .booking-modal-content {
+            width: min(680px, 100%);
+
+            max-height: 92vh;
+
+            overflow-y: auto;
+
+            background: #ffffff;
+
+            border-radius: 20px;
+
+            box-shadow:
+                0 25px 70px rgba(0, 0, 0, 0.22);
+
+            transform:
+                translateY(20px)
+                scale(0.98);
+
+            transition:
+                transform 0.25s ease;
+
+            position: relative;
+        }
+
+        .booking-modal.active
+        .booking-modal-content {
+
+            transform:
+                translateY(0)
+                scale(1);
+        }
+
+
+        /* =====================================================
+           MODAL HEADER
+        ====================================================== */
+
+        .booking-modal-header {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            padding: 24px 28px;
+
+            border-bottom:
+                1px solid #e5e7eb;
+        }
+
+        .booking-modal-title {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 14px;
+        }
+
+        .booking-modal-icon {
+
+            width: 46px;
+
+            height: 46px;
+
+            border-radius: 13px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #2563eb,
+                    #1d4ed8
+                );
+
+            color: #ffffff;
+
+            font-size: 22px;
+
+            box-shadow:
+                0 8px 20px
+                rgba(37, 99, 235, 0.25);
+        }
+
+        .booking-modal-title h3 {
+
+            margin: 0;
+
+            font-size: 20px;
+
+            font-weight: 700;
+
+            color: #111827;
+        }
+
+        .booking-modal-title p {
+
+            margin: 4px 0 0;
+
+            font-size: 13px;
+
+            color: #6b7280;
+        }
+
+
+        /* =====================================================
+           CLOSE BUTTON
+        ====================================================== */
+
+        .booking-modal-close {
+
+            width: 38px;
+
+            height: 38px;
+
+            border: none;
+
+            border-radius: 10px;
+
+            background: #f3f4f6;
+
+            color: #6b7280;
+
+            font-size: 22px;
+
+            cursor: pointer;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            transition: 0.2s ease;
+        }
+
+        .booking-modal-close:hover {
+
+            background: #fee2e2;
+
+            color: #dc2626;
+
+        }
+
+
+        /* =====================================================
+           FORM
+        ====================================================== */
+
+        .booking-form {
+
+            padding: 28px;
+        }
+
+        .booking-form-section {
+
+            margin-bottom: 24px;
+        }
+
+        .booking-form-section-title {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            margin-bottom: 16px;
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+            color: #111827;
+        }
+
+        .booking-form-section-title span {
+
+            color: #2563eb;
+        }
+
+
+        /* =====================================================
+           GRID
+        ====================================================== */
+
+        .booking-form-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, minmax(0, 1fr));
+
+            gap: 18px;
+        }
+
+        .booking-form-group {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 7px;
+        }
+
+        .booking-form-group.full {
+
+            grid-column: 1 / -1;
+        }
+
+
+        /* =====================================================
+           LABEL
+        ====================================================== */
+
+        .booking-form-group label {
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+            color: #374151;
+        }
+
+        .required {
+
+            color: #dc2626;
+        }
+
+
+        /* =====================================================
+           INPUTS
+        ====================================================== */
+
+        .booking-form-group input,
+        .booking-form-group select {
+
+            width: 100%;
+
+            height: 46px;
+
+            padding:
+                0 14px;
+
+            border:
+                1px solid #d1d5db;
+
+            border-radius: 10px;
+
+            background: #ffffff;
+
+            color: #111827;
+
+            font-size: 14px;
+
+            outline: none;
+
+            transition:
+                border-color 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+        .booking-form-group input::placeholder {
+
+            color: #9ca3af;
+        }
+
+        .booking-form-group input:focus,
+        .booking-form-group select:focus {
+
+            border-color: #2563eb;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(37, 99, 235, 0.10);
+        }
+
+
+        /* =====================================================
+           READ ONLY AMOUNT
+        ====================================================== */
+
+        .amount-wrapper {
+
+            position: relative;
+        }
+
+        .amount-prefix {
+
+            position: absolute;
+
+            left: 14px;
+
+            top: 50%;
+
+            transform:
+                translateY(-50%);
+
+            color: #6b7280;
+
+            font-weight: 600;
+
+            pointer-events: none;
+        }
+
+        .amount-wrapper input {
+
+            padding-left: 38px;
+
+            background: #f8fafc;
+
+            font-weight: 700;
+
+            color: #111827;
+        }
+
+
+        /* =====================================================
+           INFO BOX
+        ====================================================== */
+
+        .booking-info-box {
+
+            display: flex;
+
+            align-items: flex-start;
+
+            gap: 10px;
+
+            padding: 13px 15px;
+
+            margin-top: 4px;
+
+            background: #eff6ff;
+
+            border:
+                1px solid #dbeafe;
+
+            border-radius: 10px;
+
+            color: #1e40af;
+
+            font-size: 12px;
+
+            line-height: 1.5;
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ====================================================== */
+
+        .booking-modal-footer {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: flex-end;
+
+            gap: 12px;
+
+            padding: 20px 28px;
+
+            border-top:
+                1px solid #e5e7eb;
+
+            background: #f9fafb;
+
+            border-radius:
+                0 0 20px 20px;
+        }
+
+
+        /* =====================================================
+           BUTTONS
+        ====================================================== */
+
+        .booking-cancel-btn,
+        .booking-create-btn {
+
+            min-height: 44px;
+
+            padding:
+                0 20px;
+
+            border-radius: 10px;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: 0.2s ease;
+        }
+
+        .booking-cancel-btn {
+
+            border:
+                1px solid #d1d5db;
+
+            background: #ffffff;
+
+            color: #374151;
+        }
+
+        .booking-cancel-btn:hover {
+
+            background: #f3f4f6;
+        }
+
+        .booking-create-btn {
+
+            border: none;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #2563eb,
+                    #1d4ed8
+                );
+
+            color: #ffffff;
+
+            box-shadow:
+                0 7px 18px
+                rgba(37, 99, 235, 0.22);
+        }
+
+        .booking-create-btn:hover {
+
+            transform:
+                translateY(-1px);
+
+            box-shadow:
+                0 10px 22px
+                rgba(37, 99, 235, 0.28);
+        }
+
+        .booking-create-btn:disabled {
+
+            opacity: 0.65;
+
+            cursor: not-allowed;
+
+            transform: none;
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ====================================================== */
+
+        @media (max-width: 640px) {
+
+            .booking-modal {
+
+                padding: 12px;
+            }
+
+            .booking-modal-content {
+
+                max-height: 95vh;
+
+                border-radius: 16px;
+            }
+
+            .booking-modal-header {
+
+                padding:
+                    18px 18px;
+            }
+
+            .booking-form {
+
+                padding:
+                    20px 18px;
+            }
+
+            .booking-form-grid {
+
+                grid-template-columns: 1fr;
+
+                gap: 15px;
+            }
+
+            .booking-form-group.full {
+
+                grid-column: auto;
+            }
+
+            .booking-modal-footer {
+
+                padding:
+                    16px 18px;
+
+                flex-direction: column-reverse;
+
+                align-items: stretch;
+            }
+
+            .booking-cancel-btn,
+            .booking-create-btn {
+
+                width: 100%;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="app-layout">
+
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside
+        class="sidebar"
+        id="sidebar"
+    >
+
+        <div class="brand">
+
+            <div class="brand-logo">
+                🚌
+            </div>
+
+            <div>
+
+                <h2>
+                    TransitPro
+                </h2>
+
+                <small>
+                    Transport Management
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <nav class="navigation">
+
+            <a
+                href="dashboard.html"
+                class="nav-link"
+            >
+                <span>⌂</span>
+                <span>Dashboard</span>
+            </a>
+
+
+            <a
+                href="bookings.html"
+                class="nav-link active"
+            >
+                <span>🎫</span>
+                <span>Bookings</span>
+            </a>
+
+
+            <a
+                href="buses.html"
+                class="nav-link"
+            >
+                <span>🚌</span>
+                <span>Buses</span>
+            </a>
+
+
+            <a
+                href="routes.html"
+                class="nav-link"
+            >
+                <span>🛣️</span>
+                <span>Routes</span>
+            </a>
+
+
+            <a
+                href="trips.html"
+                class="nav-link"
+            >
+                <span>📅</span>
+                <span>Trips</span>
+            </a>
+
+
+            <a
+                href="drivers.html"
+                class="nav-link"
+            >
+                <span>👨‍✈️</span>
+                <span>Drivers</span>
+            </a>
+
+
+            <a
+                href="passengers.html"
+                class="nav-link"
+            >
+                <span>👥</span>
+                <span>Passengers</span>
+            </a>
+
+
+            <a
+                href="payment.html"
+                class="nav-link"
+            >
+                <span>💳</span>
+                <span>Payments</span>
+            </a>
+
+
+            <a
+                href="reports.html"
+                class="nav-link"
+            >
+                <span>📊</span>
+                <span>Reports</span>
+            </a>
+
+
+            <div class="nav-divider"></div>
+
+
+            <a
+                href="settings.html"
+                class="nav-link"
+            >
+                <span>⚙️</span>
+                <span>Settings</span>
+            </a>
+
+        </nav>
+
+
+        <button
+            id="logout"
+            class="logout-button"
+        >
+
+            <span>↪</span>
+
+            <span>
+                Logout
+            </span>
+
+        </button>
+
+    </aside>
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- =================================================
+             TOPBAR
+        ================================================== -->
+
+        <header class="topbar">
+
+            <div class="topbar-left">
+
+                <button
+                    id="menuButton"
+                    class="menu-button"
+                    type="button"
+                >
+                    ☰
+                </button>
+
+
+                <div>
+
+                    <h1>
+                        Bookings
+                    </h1>
+
+                    <p>
+                        Manage passenger reservations
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="topbar-right">
+
+                <button
+                    class="notification"
+                    type="button"
+                >
+                    🔔
+                    <span></span>
+                </button>
+
+
+                <div class="profile">
+
+                    <div
+                        class="avatar"
+                        id="avatar"
+                    >
+                        SA
+                    </div>
+
+
+                    <div class="profile-info">
+
+                        <strong id="userName">
+                            Administrator
+                        </strong>
+
+                        <small id="userRole">
+                            Administrator
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- =================================================
+             PAGE CONTENT
+        ================================================== -->
+
+        <section class="page-content">
+
+
+            <!-- =================================================
+                 PAGE HEADER
+            ================================================== -->
+
+            <div class="page-header">
+
+                <div>
+
+                    <span class="page-label">
+                        TRANSPORT MANAGEMENT
+                    </span>
+
+                    <h2>
+                        Booking Management
+                    </h2>
+
+                    <p>
+                        Create, manage and track passenger bookings.
+                    </p>
+
+                </div>
+
+
+                <button
+                    id="newBookingBtn"
+                    class="primary-button"
+                    type="button"
+                >
+
+                    <span>＋</span>
+
+                    New Booking
+
+                </button>
+
+            </div>
+
+
+            <!-- =================================================
+                 BOOKING STATISTICS
+            ================================================== -->
+
+            <div class="booking-stats">
+
+
+                <div class="booking-stat">
+
+                    <div class="stat-icon total">
+                        🎫
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Total Bookings
+                        </span>
+
+                        <strong id="totalBookings">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="booking-stat">
+
+                    <div class="stat-icon pending">
+                        ⏳
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Pending
+                        </span>
+
+                        <strong id="pendingBookings">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="booking-stat">
+
+                    <div class="stat-icon confirmed">
+                        ✓
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Confirmed
+                        </span>
+
+                        <strong id="confirmedBookings">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="booking-stat">
+
+                    <div class="stat-icon cancelled">
+                        ×
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Cancelled
+                        </span>
+
+                        <strong id="cancelledBookings">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 BOOKINGS CARD
+            ================================================== -->
+
+            <div class="card">
+
+
+                <div class="card-toolbar">
+
+                    <div>
+
+                        <h3>
+                            All Bookings
+                        </h3>
+
+                        <p>
+                            View and manage passenger reservations.
+                        </p>
+
+                    </div>
+
+
+                    <div class="toolbar-actions">
+
+                        <div class="search-box">
+
+                            <span>
+                                🔍
+                            </span>
+
+                            <input
+                                type="text"
+                                id="searchInput"
+                                placeholder="Search booking..."
+                            >
+
+                        </div>
+
+
+                        <select
+                            id="statusFilter"
+                            class="status-filter"
+                        >
+
+                            <option value="all">
+                                All Status
+                            </option>
+
+                            <option value="pending">
+                                Pending
+                            </option>
+
+                            <option value="confirmed">
+                                Confirmed
+                            </option>
+
+                            <option value="cancelled">
+                                Cancelled
+                            </option>
+
+                            <option value="completed">
+                                Completed
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     TABLE
+                ================================================== -->
+
+                <div class="table-container">
+
+                    <table class="bookings-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Booking
+                                </th>
+
+                                <th>
+                                    Passenger
+                                </th>
+
+                                <th>
+                                    Route
+                                </th>
+
+                                <th>
+                                    Date
+                                </th>
+
+                                <th>
+                                    Seat
+                                </th>
+
+                                <th>
+                                    Amount
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+                                <th>
+                                    Action
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="bookingsTableBody">
+
+                            <tr>
+
+                                <td
+                                    colspan="8"
+                                    class="loading-cell"
+                                >
+
+                                    Loading bookings...
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- =========================================================
+     CREATE BOOKING MODAL
+========================================================== -->
+
+<div
+    class="booking-modal"
+    id="bookingModal"
+    aria-hidden="true"
+>
+
+
+    <div
+        class="booking-modal-content"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="bookingModalTitle"
+    >
+
+
+        <!-- =================================================
+             MODAL HEADER
+        ================================================== -->
+
+        <div class="booking-modal-header">
+
+
+            <div class="booking-modal-title">
+
+                <div class="booking-modal-icon">
+                    🎫
+                </div>
+
+
+                <div>
+
+                    <h3 id="bookingModalTitle">
+                        Create New Booking
+                    </h3>
+
+                    <p>
+                        Enter passenger and trip information
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <button
+                type="button"
+                id="closeBookingModal"
+                class="booking-modal-close"
+                aria-label="Close booking modal"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             BOOKING FORM
+        ================================================== -->
+
+        <form
+            id="bookingForm"
+            class="booking-form"
+        >
+
+
+            <!-- =================================================
+                 PASSENGER INFORMATION
+            ================================================== -->
+
+            <div class="booking-form-section">
+
+                <div class="booking-form-section-title">
+
+                    <span>👤</span>
+
+                    Passenger Information
+
+                </div>
+
+
+                <div class="booking-form-grid">
+
+
+                    <div class="booking-form-group">
+
+                        <label for="passengerName">
+
+                            Passenger Name
+
+                            <span class="required">
+                                *
+                            </span>
+
+                        </label>
+
+
+                        <input
+                            type="text"
+                            id="passengerName"
+                            name="passengerName"
+                            placeholder="Enter passenger full name"
+                            autocomplete="name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="booking-form-group">
+
+                        <label for="passengerPhone">
+
+                            Phone Number
+
+                            <span class="required">
+                                *
+                            </span>
+
+                        </label>
+
+
+                        <input
+                            type="tel"
+                            id="passengerPhone"
+                            name="passengerPhone"
+                            placeholder="08012345678"
+                            autocomplete="tel"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 TRIP INFORMATION
+            ================================================== -->
+
+            <div class="booking-form-section">
+
+                <div class="booking-form-section-title">
+
+                    <span>🚌</span>
+
+                    Trip Information
+
+                </div>
+
+
+                <div class="booking-form-grid">
+
+
+                    <div class="booking-form-group full">
+
+                        <label for="tripSelect">
+
+                            Select Trip
+
+                            <span class="required">
+                                *
+                            </span>
+
+                        </label>
+
+
+                        <select
+                            id="tripSelect"
+                            name="tripSelect"
+                            required
+                        >
+
+                            <option value="">
+                                Select Trip
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="booking-form-group">
+
+                        <label for="seatNumber">
+
+                            Seat Number
+
+                            <span class="required">
+                                *
+                            </span>
+
+                        </label>
+
+
+                        <input
+                            type="number"
+                            id="seatNumber"
+                            name="seatNumber"
+                            min="1"
+                            step="1"
+                            placeholder="e.g. 10"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="booking-form-group">
+
+                        <label for="bookingAmount">
+                            Amount
+                        </label>
+
+
+                        <div class="amount-wrapper">
+
+                            <span class="amount-prefix">
+                                ₦
+                            </span>
+
+
+                            <input
+                                type="text"
+                                id="bookingAmount"
+                                name="bookingAmount"
+                                placeholder="0.00"
+                                value="0.00"
+                                readonly
+                            >
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="booking-info-box">
+
+                    <span>
+                        ℹ️
+                    </span>
+
+                    <span>
+                        The booking amount is automatically taken
+                        from the selected trip fare. You don't need
+                        to enter it manually.
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 BOOKING STATUS
+            ================================================== -->
+
+            <div class="booking-form-section">
+
+                <div class="booking-form-section-title">
+
+                    <span>📋</span>
+
+                    Booking Details
+
+                </div>
+
+
+                <div class="booking-form-grid">
+
+
+                    <div class="booking-form-group">
+
+                        <label for="bookingStatus">
+                            Booking Status
+                        </label>
+
+
+                        <select
+                            id="bookingStatus"
+                            name="bookingStatus"
+                        >
+
+                            <option value="pending">
+                                Pending
+                            </option>
+
+                            <option value="confirmed">
+                                Confirmed
+                            </option>
+
+                            <option value="cancelled">
+                                Cancelled
+                            </option>
+
+                            <option value="completed">
+                                Completed
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="booking-form-group">
+
+                        <label for="paymentStatus">
+                            Payment Status
+                        </label>
+
+
+                        <select
+                            id="paymentStatus"
+                            name="paymentStatus"
+                        >
+
+                            <option value="pending">
+                                Pending
+                            </option>
+
+                            <option value="paid">
+                                Paid
+                            </option>
+
+                            <option value="failed">
+                                Failed
+                            </option>
+
+                            <option value="refunded">
+                                Refunded
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 MODAL FOOTER
+            ================================================== -->
+
+            <div class="booking-modal-footer">
+
+
+                <button
+                    type="button"
+                    id="cancelBookingModal"
+                    class="booking-cancel-btn"
+                >
+
+                    Cancel
+
+                </button>
+
+
+                <button
+                    type="submit"
+                    id="createBookingButton"
+                    class="booking-create-btn"
+                >
+
+                    Create Booking
+
+                </button>
+
+            </div>
+
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================== -->
+
+<script src="js/bookings.js"></script>
+
+
+</body>
+
+</html>

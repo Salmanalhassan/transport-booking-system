@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Passenger Registration | TransitPro
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/register.css"
+    >
+
+</head>
+
+
+<body>
+
+    <main class="register-page">
+
+
+        <!-- ==========================================
+             LEFT SIDE / SHOWCASE
+        =========================================== -->
+
+        <section class="register-showcase">
+
+            <div class="showcase-overlay"></div>
+
+
+            <div class="showcase-content">
+
+
+                <!-- BRAND -->
+
+                <div class="brand">
+
+                    <div class="brand-icon">
+                        🚌
+                    </div>
+
+                    <div>
+
+                        <h2>
+                            TransitPro
+                        </h2>
+
+                        <span>
+                            Transport Booking
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SHOWCASE TEXT -->
+
+                <div class="showcase-text">
+
+                    <span class="welcome-label">
+                        JOIN TRANSITPRO
+                    </span>
+
+
+                    <h1>
+                        Start your journey
+                        with us.
+                    </h1>
+
+
+                    <p>
+                        Create your passenger account,
+                        explore available routes, book
+                        tickets online, and manage your
+                        journeys easily.
+                    </p>
+
+                </div>
+
+
+                <!-- FEATURES -->
+
+                <div class="showcase-features">
+
+
+                    <div class="feature-item">
+
+                        <span>
+                            ✓
+                        </span>
+
+                        <p>
+                            Easy online ticket booking
+                        </p>
+
+                    </div>
+
+
+                    <div class="feature-item">
+
+                        <span>
+                            ✓
+                        </span>
+
+                        <p>
+                            View available routes
+                        </p>
+
+                    </div>
+
+
+                    <div class="feature-item">
+
+                        <span>
+                            ✓
+                        </span>
+
+                        <p>
+                            Secure online payments
+                        </p>
+
+                    </div>
+
+
+                    <div class="feature-item">
+
+                        <span>
+                            ✓
+                        </span>
+
+                        <p>
+                            Manage your journeys
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==========================================
+             RIGHT SIDE / REGISTRATION FORM
+        =========================================== -->
+
+        <section class="register-section">
+
+
+            <div class="register-container">
+
+
+                <!-- MOBILE BRAND -->
+
+                <div class="mobile-brand">
+
+                    <div class="brand-icon">
+                        🚌
+                    </div>
+
+                    <h2>
+                        TransitPro
+                    </h2>
+
+                </div>
+
+
+
+                <!-- HEADER -->
+
+                <div class="register-header">
+
+                    <span class="register-label">
+                        PASSENGER REGISTRATION
+                    </span>
+
+
+                    <h1>
+                        Create your account
+                    </h1>
+
+
+                    <p>
+                        Register to book tickets
+                        and manage your journeys.
+                    </p>
+
+                </div>
+
+
+
+                <!-- MESSAGE -->
+
+                <div
+                    id="registerMessage"
+                    class="register-message"
+                    role="alert"
+                    aria-live="polite"
+                ></div>
+
+
+
+                <!-- ======================================
+                     REGISTRATION FORM
+                ======================================= -->
+
+                <form
+                    id="registerForm"
+                    class="register-form"
+                    novalidate
+                >
+
+
+                    <!-- ==================================
+                         PERSONAL INFORMATION
+                    =================================== -->
+
+                    <div class="form-section-title">
+
+                        <span>
+                            01
+                        </span>
+
+                        <div>
+
+                            <h3>
+                                Personal Information
+                            </h3>
+
+                            <p>
+                                Enter your basic information.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- FULL NAME -->
+
+                    <div class="form-group">
+
+                        <label for="fullName">
+                            Full Name
+                            <span>*</span>
+                        </label>
+
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">
+                                👤
+                            </span>
+
+
+                            <input
+                                type="text"
+                                id="fullName"
+                                name="full_name"
+                                placeholder="Enter your full name"
+                                autocomplete="name"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- EMAIL -->
+
+                    <div class="form-group">
+
+                        <label for="email">
+                            Email Address
+                            <small>
+                                required
+                            </small>
+                        </label>
+
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">
+                                ✉
+                            </span>
+
+
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder="example@email.com"
+                                autocomplete="email"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- PHONE -->
+
+                    <div class="form-group">
+
+                        <label for="phone">
+                            Phone Number
+                            <span>*</span>
+                        </label>
+
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">
+                                📱
+                            </span>
+
+
+                            <input
+                                type="tel"
+                                id="phone"
+                                name="phone"
+                                placeholder="08012345678"
+                                autocomplete="tel"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- ADDRESS -->
+
+                    <div class="form-group">
+
+                        <label for="address">
+                            Address
+                            <small>
+                                required
+                            </small>
+                        </label>
+
+
+                        <div class="input-wrapper textarea-wrapper">
+
+                            <span class="input-icon">
+                                📍
+                            </span>
+
+
+                            <textarea
+                                id="address"
+                                name="address"
+                                placeholder="Enter your address"
+                                rows="3"
+                                autocomplete="street-address"
+                            ></textarea>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- ==================================
+                         EMERGENCY CONTACT
+                    =================================== -->
+
+                    <div class="form-section-title">
+
+                        <span>
+                            02
+                        </span>
+
+                        <div>
+
+                            <h3>
+                                Emergency Contact
+                            </h3>
+
+                            <p>
+                                Someone we can contact
+                                in an emergency.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- EMERGENCY CONTACT -->
+
+                    <div class="form-group">
+
+                        <label for="emergencyContact">
+                            Emergency Contact
+                            <small>
+                                required
+                            </small>
+                        </label>
+
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">
+                                👥
+                            </span>
+
+
+                            <input
+                                type="text"
+                                id="emergencyContact"
+                                name="emergency_contact"
+                                placeholder="Contact person's name"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- EMERGENCY PHONE -->
+
+                    <div class="form-group">
+
+                        <label for="emergencyPhone">
+                            Emergency Phone
+                            <small>
+                                required
+                            </small>
+                        </label>
+
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">
+                                📞
+                            </span>
+
+
+                            <input
+                                type="tel"
+                                id="emergencyPhone"
+                                name="emergency_phone"
+                                placeholder="08012345678"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- ==================================
+                         ACCOUNT SECURITY
+                    =================================== -->
+
+                    <div class="form-section-title">
+
+                        <span>
+                            03
+                        </span>
+
+                        <div>
+
+                            <h3>
+                                Account Security
+                            </h3>
+
+                            <p>
+                                Create a secure password.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- PASSWORD -->
+
+                    <div class="form-group">
+
+                        <label for="password">
+                            Password
+                            <span>*</span>
+                        </label>
+
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">
+                                🔒
+                            </span>
+
+
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                placeholder="At least 6 characters"
+                                autocomplete="new-password"
+                                minlength="6"
+                                required
+                            >
+
+
+                            <button
+                                type="button"
+                                id="togglePassword"
+                                class="password-toggle"
+                                aria-label="Show password"
+                            >
+                                👁
+                            </button>
+
+                        </div>
+
+
+                        <div
+                            id="passwordStrength"
+                            class="password-strength"
+                        ></div>
+
+                    </div>
+
+
+
+                    <!-- CONFIRM PASSWORD -->
+
+                    <div class="form-group">
+
+                        <label for="confirmPassword">
+                            Confirm Password
+                            <span>*</span>
+                        </label>
+
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">
+                                🔐
+                            </span>
+
+
+                            <input
+                                type="password"
+                                id="confirmPassword"
+                                name="confirm_password"
+                                placeholder="Re-enter your password"
+                                autocomplete="new-password"
+                                required
+                            >
+
+
+                            <button
+                                type="button"
+                                id="toggleConfirmPassword"
+                                class="password-toggle"
+                                aria-label="Show password"
+                            >
+                                👁
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- TERMS -->
+
+                    <div class="terms-row">
+
+                        <label>
+
+                            <input
+                                type="checkbox"
+                                id="terms"
+                                name="terms"
+                                required
+                            >
+
+
+                            <span>
+
+                                I agree to the
+                                <a
+                                    href="#"
+                                    id="termsLink"
+                                >
+                                    Terms & Conditions
+                                </a>
+                                and
+                                <a
+                                    href="#"
+                                    id="privacyLink"
+                                >
+                                    Privacy Policy
+                                </a>.
+
+                            </span>
+
+                        </label>
+
+                    </div>
+
+
+
+                    <!-- SUBMIT -->
+
+                    <button
+                        type="submit"
+                        id="registerButton"
+                        class="register-button"
+                    >
+
+                        <span id="registerButtonText">
+                            Create Passenger Account
+                        </span>
+
+
+                        <span
+                            id="registerSpinner"
+                            class="spinner"
+                        ></span>
+
+                    </button>
+
+
+
+                </form>
+
+
+
+                <!-- ======================================
+                     LOGIN LINK
+                ======================================= -->
+
+                <div class="login-link">
+
+                    <span>
+                        Already have an account?
+                    </span>
+
+
+                    <a href="login.html">
+                        Sign in
+                    </a>
+
+                </div>
+
+
+
+                <!-- FOOTER -->
+
+                <div class="register-footer">
+
+                    <p>
+                        Transport Booking Management System
+                    </p>
+
+
+                    <span>
+                        Secure Passenger Registration
+                    </span>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- ==========================================
+         JAVASCRIPT
+    =========================================== -->
+
+    <script src="js/api.js"></script>
+
+    <script src="js/register.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        View Routes | TransitPro
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/passenger-routes.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- ==========================================
+         SIDEBAR
+    =========================================== -->
+
+    <aside
+        class="passenger-sidebar"
+        id="passengerSidebar"
+    >
+
+        <div class="sidebar-brand">
+
+            <div class="sidebar-brand-icon">
+                🚌
+            </div>
+
+            <div>
+
+                <h2>
+                    TransitPro
+                </h2>
+
+                <span>
+                    Passenger Portal
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <nav class="passenger-nav">
+
+            <a
+                href="passenger-dashboard.html"
+                class="nav-item"
+            >
+                <span class="nav-icon">🏠</span>
+                <span>Dashboard</span>
+            </a>
+
+
+            <a
+                href="passenger-routes.html"
+                class="nav-item active"
+            >
+                <span class="nav-icon">🗺️</span>
+                <span>View Routes</span>
+            </a>
+
+
+            <a
+                href="passenger-bookings.html"
+                class="nav-item"
+            >
+                <span class="nav-icon">🎫</span>
+                <span>My Bookings</span>
+            </a>
+
+
+            <a
+                href="passenger-payment.html"
+                class="nav-item"
+            >
+                <span class="nav-icon">💳</span>
+                <span>Payments</span>
+            </a>
+
+
+            <a
+                href="passenger-profile.html"
+                class="nav-item"
+            >
+                <span class="nav-icon">👤</span>
+                <span>My Profile</span>
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <button
+                type="button"
+                id="logoutButton"
+                class="logout-button"
+            >
+
+                <span>🚪</span>
+
+                <span>Logout</span>
+
+            </button>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- ==========================================
+         MAIN
+    =========================================== -->
+
+    <main class="passenger-main">
+
+
+        <!-- ======================================
+             TOPBAR
+        ======================================= -->
+
+        <header class="passenger-topbar">
+
+            <div class="topbar-left">
+
+                <button
+                    type="button"
+                    id="menuButton"
+                    class="menu-button"
+                    aria-label="Open menu"
+                >
+                    ☰
+                </button>
+
+                <div>
+
+                    <span class="page-label">
+                        PASSENGER PORTAL
+                    </span>
+
+                    <h1>
+                        Available Routes
+                    </h1>
+
+                </div>
+
+            </div>
+
+
+            <div class="topbar-right">
+
+                <div class="notification-button">
+                    🔔
+                </div>
+
+
+                <div class="user-area">
+
+                    <div
+                        class="user-avatar"
+                        id="userAvatar"
+                    >
+                        P
+                    </div>
+
+                    <div class="user-details">
+
+                        <strong id="userName">
+                            Passenger
+                        </strong>
+
+                        <span id="userPhone">
+                            —
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- ======================================
+             CONTENT
+        ======================================= -->
+
+        <section class="passenger-content">
+
+
+            <!-- ==================================
+                 PAGE INTRO
+            =================================== -->
+
+            <div class="page-intro">
+
+                <div>
+
+                    <span class="intro-label">
+                        PLAN YOUR JOURNEY
+                    </span>
+
+                    <h2>
+                        Find Your Next Trip
+                    </h2>
+
+                    <p>
+                        Search available routes and
+                        book your bus ticket online.
+                    </p>
+
+                </div>
+
+                <div class="intro-icon">
+                    🚌
+                </div>
+
+            </div>
+
+
+
+            <!-- ==================================
+                 SEARCH CARD
+            =================================== -->
+
+            <div class="search-card">
+
+                <div class="search-card-header">
+
+                    <div>
+
+                        <span class="card-label">
+                            SEARCH TRIPS
+                        </span>
+
+                        <h3>
+                            Find Available Trips
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+                <form
+                    id="routeSearchForm"
+                    class="search-form"
+                >
+
+
+                    <!-- ORIGIN -->
+
+                    <div class="form-group">
+
+                        <label for="origin">
+                            From
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">
+                                📍
+                            </span>
+
+                            <input
+                                type="text"
+                                id="origin"
+                                name="origin"
+                                placeholder="Departure city"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- DESTINATION -->
+
+                    <div class="form-group">
+
+                        <label for="destination">
+                            To
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">
+                                📍
+                            </span>
+
+                            <input
+                                type="text"
+                                id="destination"
+                                name="destination"
+                                placeholder="Destination city"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- DATE -->
+
+                    <div class="form-group">
+
+                        <label for="departureDate">
+                            Travel Date
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">
+                                📅
+                            </span>
+
+                            <input
+                                type="date"
+                                id="departureDate"
+                                name="departureDate"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- BUTTON -->
+
+                    <button
+                        type="submit"
+                        class="search-button"
+                        id="searchButton"
+                    >
+                        🔍 Search Trips
+                    </button>
+
+                </form>
+
+            </div>
+
+
+
+            <!-- ==================================
+                 ROUTE SUMMARY
+            =================================== -->
+
+            <div class="results-header">
+
+                <div>
+
+                    <span class="card-label">
+                        AVAILABLE TRIPS
+                    </span>
+
+                    <h3>
+                        <span id="resultsCount">
+                            0
+                        </span>
+                        Trips Found
+                    </h3>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    id="clearSearch"
+                    class="clear-button"
+                >
+                    Clear Search
+                </button>
+
+            </div>
+
+
+
+            <!-- ==================================
+                 LOADING
+            =================================== -->
+
+            <div
+                id="loadingState"
+                class="loading-state"
+            >
+
+                <div class="loading-spinner"></div>
+
+                <p>
+                    Loading available trips...
+                </p>
+
+            </div>
+
+
+
+            <!-- ==================================
+                 ERROR
+            =================================== -->
+
+            <div
+                id="errorState"
+                class="error-state"
+                style="display: none;"
+            >
+
+                <div class="error-icon">
+                    ⚠️
+                </div>
+
+                <h3>
+                    Unable to Load Trips
+                </h3>
+
+                <p id="errorMessage">
+                    Something went wrong.
+                </p>
+
+                <button
+                    type="button"
+                    id="retryButton"
+                    class="retry-button"
+                >
+                    Try Again
+                </button>
+
+            </div>
+
+
+
+            <!-- ==================================
+                 ROUTES GRID
+            =================================== -->
+
+            <div
+                id="routesGrid"
+                class="routes-grid"
+            ></div>
+
+
+
+            <!-- ==================================
+                 EMPTY STATE
+            =================================== -->
+
+            <div
+                id="emptyState"
+                class="empty-state"
+                style="display: none;"
+            >
+
+                <div class="empty-icon">
+                    🚌
+                </div>
+
+                <h3>
+                    No Trips Found
+                </h3>
+
+                <p>
+                    There are no available trips
+                    matching your search.
+                </p>
+
+                <button
+                    type="button"
+                    id="showAllButton"
+                    class="small-button"
+                >
+                    Show All Trips
+                </button>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ======================================
+             FOOTER
+        ======================================= -->
+
+        <footer class="passenger-footer">
+
+            <p>
+                © 2026 TransitPro Transport Booking
+                Management System
+            </p>
+
+            <span>
+                Passenger Portal
+            </span>
+
+        </footer>
+
+
+    </main>
+
+
+
+    <!-- ==========================================
+         MOBILE OVERLAY
+    =========================================== -->
+
+    <div
+        class="sidebar-overlay"
+        id="sidebarOverlay"
+    ></div>
+
+
+
+    <!-- ==========================================
+         JAVASCRIPT
+    =========================================== -->
+
+    <script src="js/api.js"></script>
+
+    <script src="js/passenger-routes.js"></script>
+
+
+</body>
+
+</html>

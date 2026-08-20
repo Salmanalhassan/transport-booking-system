@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login | Transport Booking System</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+
+<body>
+
+    <main class="login-page">
+
+        <!-- Left Side -->
+        <section class="login-showcase">
+
+            <div class="showcase-overlay"></div>
+
+            <div class="showcase-content">
+
+                <div class="brand">
+                    <div class="brand-icon">🚌</div>
+
+                    <div>
+                        <h2>TransitPro</h2>
+                        <span>Transport Management</span>
+                    </div>
+                </div>
+
+                <div class="showcase-text">
+                    <span class="welcome-label">WELCOME BACK</span>
+
+                    <h1>
+                        Manage your transport
+                        business smarter.
+                    </h1>
+
+                    <p>
+                        Manage bookings, buses, drivers, routes,
+                        passengers and payments from one powerful
+                        platform.
+                    </p>
+                </div>
+
+                <div class="showcase-features">
+
+                    <div class="feature-item">
+                        <span>✓</span>
+                        <p>Easy Booking Management</p>
+                    </div>
+
+                    <div class="feature-item">
+                        <span>✓</span>
+                        <p>Real-time Trip Management</p>
+                    </div>
+
+                    <div class="feature-item">
+                        <span>✓</span>
+                        <p>Powerful Reports & Analytics</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Right Side -->
+        <section class="login-section">
+
+            <div class="login-container">
+
+                <div class="mobile-brand">
+                    <div class="brand-icon">🚌</div>
+                    <h2>TransitPro</h2>
+                </div>
+
+                <div class="login-header">
+                    <span class="login-label">ACCOUNT LOGIN</span>
+
+                    <h1>Welcome back 👋</h1>
+
+                    <p>
+                        Sign in to access your management dashboard.
+                    </p>
+                </div>
+
+
+                <!-- Error Message -->
+                <div
+                    id="loginMessage"
+                    class="login-message"
+                    role="alert"
+                ></div>
+
+
+                <!-- Login Form -->
+                <form id="loginForm" class="login-form">
+
+                    <!-- Email -->
+                    <div class="form-group">
+
+                        <label for="email">
+                            Email Address
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">
+                                ✉
+                            </span>
+
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder="admin@transport.com"
+                                autocomplete="email"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Password -->
+                    <div class="form-group">
+
+                        <div class="password-label">
+
+                            <label for="password">
+                                Password
+                            </label>
+
+                            <a href="#" id="forgotPassword">
+                                Forgot password?
+                            </a>
+
+                        </div>
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">
+                                🔒
+                            </span>
+
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                placeholder="Enter your password"
+                                autocomplete="current-password"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                class="password-toggle"
+                                id="togglePassword"
+                                aria-label="Show password"
+                            >
+                                👁
+                            </button>
+
+                        </div>
+
+                    </div>
+                    <div class="register-link">
+    <span>Don't have an account?</span>
+    <a href="register.html">Register here</a>
+</div>
+
+
+                    <!-- Remember Me -->
+                    <div class="remember-row">
+
+                        <label class="remember-label">
+
+                            <input
+                                type="checkbox"
+                                id="rememberMe"
+                            >
+
+                            <span>
+                                Remember me
+                            </span>
+
+                        </label>
+
+                    </div>
+
+
+                    <!-- Login Button -->
+                    <button
+                        type="submit"
+                        id="loginButton"
+                        class="login-button"
+                    >
+                        <span id="loginButtonText">
+                            Sign In
+                        </span>
+
+                        <span
+                            id="loginSpinner"
+                            class="spinner"
+                        ></span>
+                    </button>
+
+                </form>
+
+
+                <div class="login-footer">
+
+                    <p>
+                        Transport Booking Management System
+                    </p>
+
+                    <span>
+                        Secure Management Portal
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+
+</body>
+</html>

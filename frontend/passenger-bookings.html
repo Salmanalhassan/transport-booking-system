@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        My Bookings | TransitPro
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/passenger-bookings.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- ==========================================
+         SIDEBAR
+    =========================================== -->
+
+    <aside
+        class="passenger-sidebar"
+        id="passengerSidebar"
+    >
+
+        <div class="sidebar-brand">
+
+            <div class="sidebar-brand-icon">
+                🚌
+            </div>
+
+            <div>
+
+                <h2>
+                    TransitPro
+                </h2>
+
+                <span>
+                    Passenger Portal
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- NAVIGATION -->
+
+        <nav class="passenger-nav">
+
+            <a
+                href="passenger-dashboard.html"
+                class="nav-item"
+            >
+
+                <span class="nav-icon">
+                    🏠
+                </span>
+
+                <span>
+                    Dashboard
+                </span>
+
+            </a>
+
+
+            <a
+                href="passenger-routes.html"
+                class="nav-item"
+            >
+
+                <span class="nav-icon">
+                    🗺️
+                </span>
+
+                <span>
+                    View Routes
+                </span>
+
+            </a>
+
+
+            <a
+                href="passenger-bookings.html"
+                class="nav-item active"
+            >
+
+                <span class="nav-icon">
+                    🎫
+                </span>
+
+                <span>
+                    My Bookings
+                </span>
+
+            </a>
+
+
+            <a
+                href="passenger-payment.html"
+                class="nav-item"
+            >
+
+                <span class="nav-icon">
+                    💳
+                </span>
+
+                <span>
+                    Payments
+                </span>
+
+            </a>
+
+
+            <a
+                href="passenger-profile.html"
+                class="nav-item"
+            >
+
+                <span class="nav-icon">
+                    👤
+                </span>
+
+                <span>
+                    My Profile
+                </span>
+
+            </a>
+
+        </nav>
+
+
+        <!-- SIDEBAR BOTTOM -->
+
+        <div class="sidebar-bottom">
+
+            <button
+                type="button"
+                id="logoutButton"
+                class="logout-button"
+            >
+
+                <span>
+                    🚪
+                </span>
+
+                <span>
+                    Logout
+                </span>
+
+            </button>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- ==========================================
+         MAIN CONTENT
+    =========================================== -->
+
+    <main class="passenger-main">
+
+
+        <!-- ======================================
+             TOPBAR
+        ======================================= -->
+
+        <header class="passenger-topbar">
+
+            <div class="topbar-left">
+
+                <button
+                    type="button"
+                    id="menuButton"
+                    class="menu-button"
+                    aria-label="Open menu"
+                >
+                    ☰
+                </button>
+
+
+                <div>
+
+                    <span class="page-label">
+                        PASSENGER PORTAL
+                    </span>
+
+                    <h1>
+                        My Bookings
+                    </h1>
+
+                </div>
+
+            </div>
+
+
+            <div class="topbar-right">
+
+                <div class="notification-button">
+                    🔔
+                </div>
+
+
+                <div class="user-area">
+
+                    <div
+                        class="user-avatar"
+                        id="userAvatar"
+                    >
+                        P
+                    </div>
+
+
+                    <div class="user-details">
+
+                        <strong id="userName">
+                            Passenger
+                        </strong>
+
+                        <span id="userPhone">
+                            —
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- ======================================
+             CONTENT
+        ======================================= -->
+
+        <section class="passenger-content">
+
+
+            <!-- ==================================
+                 PAGE INTRO
+            =================================== -->
+
+            <div class="page-intro">
+
+                <div>
+
+                    <span class="intro-label">
+                        TRAVEL MANAGEMENT
+                    </span>
+
+                    <h2>
+                        Your Bookings
+                    </h2>
+
+                    <p>
+                        View and manage all your bus
+                        ticket bookings in one place.
+                    </p>
+
+                </div>
+
+
+                <div class="intro-icon">
+                    🎫
+                </div>
+
+            </div>
+
+
+
+            <!-- ==================================
+                 BOOKING STATISTICS
+            =================================== -->
+
+            <div class="booking-stats">
+
+
+                <div class="booking-stat-card">
+
+                    <div class="booking-stat-icon purple">
+                        🎫
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Total Bookings
+                        </span>
+
+                        <strong id="totalBookings">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="booking-stat-card">
+
+                    <div class="booking-stat-icon green">
+                        ✓
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Confirmed
+                        </span>
+
+                        <strong id="confirmedBookings">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="booking-stat-card">
+
+                    <div class="booking-stat-icon orange">
+                        ⏳
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Pending
+                        </span>
+
+                        <strong id="pendingBookings">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="booking-stat-card">
+
+                    <div class="booking-stat-icon red">
+                        ✕
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Cancelled
+                        </span>
+
+                        <strong id="cancelledBookings">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ==================================
+                 FILTER CARD
+            =================================== -->
+
+            <div class="filter-card">
+
+                <div class="filter-header">
+
+                    <div>
+
+                        <span class="card-label">
+                            BOOKING HISTORY
+                        </span>
+
+                        <h3>
+                            Find a Booking
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+                <div class="booking-filters">
+
+
+                    <!-- SEARCH -->
+
+                    <div class="filter-group">
+
+                        <label for="bookingSearch">
+                            Search
+                        </label>
+
+                        <div class="filter-input-wrapper">
+
+                            <span>
+                                🔍
+                            </span>
+
+                            <input
+                                type="text"
+                                id="bookingSearch"
+                                placeholder="Booking reference or route..."
+                            >
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- STATUS -->
+
+                    <div class="filter-group">
+
+                        <label for="bookingStatusFilter">
+                            Status
+                        </label>
+
+                        <select
+                            id="bookingStatusFilter"
+                        >
+
+                            <option value="all">
+                                All Status
+                            </option>
+
+                            <option value="pending">
+                                Pending
+                            </option>
+
+                            <option value="confirmed">
+                                Confirmed
+                            </option>
+
+                            <option value="cancelled">
+                                Cancelled
+                            </option>
+
+                            <option value="completed">
+                                Completed
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <!-- DATE -->
+
+                    <div class="filter-group">
+
+                        <label for="bookingDateFilter">
+                            Travel Date
+                        </label>
+
+                        <input
+                            type="date"
+                            id="bookingDateFilter"
+                        >
+
+                    </div>
+
+
+
+                    <!-- CLEAR -->
+
+                    <button
+                        type="button"
+                        id="clearFilters"
+                        class="clear-filter-button"
+                    >
+                        Clear Filters
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ==================================
+                 RESULTS HEADER
+            =================================== -->
+
+            <div class="results-header">
+
+                <div>
+
+                    <span class="card-label">
+                        MY TRIPS
+                    </span>
+
+                    <h3>
+
+                        <span id="resultsCount">
+                            0
+                        </span>
+
+                        Bookings
+
+                    </h3>
+
+                </div>
+
+
+                <a
+                    href="passenger-routes.html"
+                    class="book-new-button"
+                >
+                    🚌 Book New Trip
+                </a>
+
+            </div>
+
+
+
+            <!-- ==================================
+                 LOADING
+            =================================== -->
+
+            <div
+                id="loadingState"
+                class="loading-state"
+            >
+
+                <div class="loading-spinner"></div>
+
+                <p>
+                    Loading your bookings...
+                </p>
+
+            </div>
+
+
+
+            <!-- ==================================
+                 ERROR
+            =================================== -->
+
+            <div
+                id="errorState"
+                class="error-state"
+                style="display: none;"
+            >
+
+                <div class="error-icon">
+                    ⚠️
+                </div>
+
+                <h3>
+                    Unable to Load Bookings
+                </h3>
+
+                <p id="errorMessage">
+                    Something went wrong.
+                </p>
+
+                <button
+                    type="button"
+                    id="retryButton"
+                    class="retry-button"
+                >
+                    Try Again
+                </button>
+
+            </div>
+
+
+
+            <!-- ==================================
+                 BOOKINGS TABLE
+            =================================== -->
+
+            <div
+                id="bookingsContainer"
+                class="bookings-card"
+            >
+
+                <div class="table-wrapper">
+
+                    <table class="booking-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Booking Reference
+                                </th>
+
+                                <th>
+                                    Route
+                                </th>
+
+                                <th>
+                                    Travel Date
+                                </th>
+
+                                <th>
+                                    Departure
+                                </th>
+
+                                <th>
+                                    Seat
+                                </th>
+
+                                <th>
+                                    Amount
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+                                <th>
+                                    Payment
+                                </th>
+
+                                <th>
+                                    Action
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody
+                            id="bookingsTableBody"
+                        >
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ==================================
+                 EMPTY STATE
+            =================================== -->
+
+            <div
+                id="emptyState"
+                class="empty-state"
+                style="display: none;"
+            >
+
+                <div class="empty-icon">
+                    🎫
+                </div>
+
+                <h3>
+                    No Bookings Found
+                </h3>
+
+                <p>
+                    You don't have any bookings
+                    matching your search.
+                </p>
+
+                <a
+                    href="passenger-routes.html"
+                    class="small-button"
+                >
+                    🚌 Find a Trip
+                </a>
+
+            </div>
+
+
+
+            <!-- ==================================
+                 BOOKING DETAILS MODAL
+            =================================== -->
+
+            <div
+                id="bookingModal"
+                class="booking-modal"
+                aria-hidden="true"
+            >
+
+                <div class="booking-modal-content">
+
+
+                    <!-- MODAL HEADER -->
+
+                    <div class="modal-header">
+
+                        <div>
+
+                            <span class="card-label">
+                                BOOKING DETAILS
+                            </span>
+
+                            <h3>
+                                Ticket Information
+                            </h3>
+
+                        </div>
+
+
+                        <button
+                            type="button"
+                            id="closeBookingModal"
+                            class="modal-close"
+                            aria-label="Close"
+                        >
+                            ✕
+                        </button>
+
+                    </div>
+
+
+
+                    <!-- MODAL BODY -->
+
+                    <div
+                        id="bookingDetails"
+                        class="booking-details"
+                    >
+
+                        <!-- JS WILL INSERT DETAILS -->
+
+                    </div>
+
+
+
+                    <!-- MODAL FOOTER -->
+
+                    <div class="modal-footer">
+
+                        <button
+                            type="button"
+                            id="closeBookingModalBottom"
+                            class="modal-secondary-button"
+                        >
+                            Close
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+<!-- ==================================
+     BEAUTIFUL TICKET MODAL
+=================================== -->
+
+<div
+    id="ticketModal"
+    class="ticket-modal"
+    aria-hidden="true"
+>
+
+    <div class="ticket-modal-content">
+
+        <!-- TICKET HEADER -->
+
+        <div class="ticket-header">
+
+            <div class="ticket-brand">
+
+                <div class="ticket-logo">
+                    🚌
+                </div>
+
+                <div>
+
+                    <h2>
+                        TransitPro
+                    </h2>
+
+                    <span>
+                        Bus Travel Ticket
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <button
+                type="button"
+                id="closeTicketModal"
+                class="ticket-close"
+                aria-label="Close ticket"
+            >
+                ✕
+            </button>
+
+        </div>
+
+
+        <!-- PAYMENT STATUS -->
+
+        <div class="ticket-paid-badge">
+
+            ✓ PAYMENT SUCCESSFUL
+
+        </div>
+
+
+        <!-- ROUTE -->
+
+        <div class="ticket-route">
+
+            <div class="ticket-location">
+
+                <span>
+                    FROM
+                </span>
+
+                <strong id="ticketOrigin">
+                    —
+                </strong>
+
+            </div>
+
+
+            <div class="ticket-route-line">
+
+                🚌
+
+                <span></span>
+
+            </div>
+
+
+            <div class="ticket-location">
+
+                <span>
+                    TO
+                </span>
+
+                <strong id="ticketDestination">
+                    —
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- TICKET NUMBER -->
+
+        <div class="ticket-number-section">
+
+            <span>
+                TICKET NUMBER
+            </span>
+
+            <strong id="ticketNumber">
+                —
+            </strong>
+
+        </div>
+
+
+        <!-- PASSENGER DETAILS -->
+
+        <div class="ticket-section">
+
+            <div class="ticket-section-title">
+                Passenger Information
+            </div>
+
+
+            <div class="ticket-grid">
+
+                <div class="ticket-item">
+
+                    <span>
+                        Passenger
+                    </span>
+
+                    <strong id="ticketPassengerName">
+                        —
+                    </strong>
+
+                </div>
+
+
+                <div class="ticket-item">
+
+                    <span>
+                        Phone
+                    </span>
+
+                    <strong id="ticketPassengerPhone">
+                        —
+                    </strong>
+
+                </div>
+
+
+                <div class="ticket-item">
+
+                    <span>
+                        Seat
+                    </span>
+
+                    <strong id="ticketSeat">
+                        —
+                    </strong>
+
+                </div>
+
+
+                <div class="ticket-item">
+
+                    <span>
+                        Booking Reference
+                    </span>
+
+                    <strong id="ticketBookingReference">
+                        —
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- TRAVEL DETAILS -->
+
+        <div class="ticket-section">
+
+            <div class="ticket-section-title">
+                Travel Information
+            </div>
+
+
+            <div class="ticket-grid">
+
+                <div class="ticket-item">
+
+                    <span>
+                        Travel Date
+                    </span>
+
+                    <strong id="ticketTravelDate">
+                        —
+                    </strong>
+
+                </div>
+
+
+                <div class="ticket-item">
+
+                    <span>
+                        Departure
+                    </span>
+
+                    <strong id="ticketDeparture">
+                        —
+                    </strong>
+
+                </div>
+
+
+                <div class="ticket-item">
+
+                    <span>
+                        Arrival
+                    </span>
+
+                    <strong id="ticketArrival">
+                        —
+                    </strong>
+
+                </div>
+
+
+                <div class="ticket-item">
+
+                    <span>
+                        Amount Paid
+                    </span>
+
+                    <strong id="ticketAmount">
+                        —
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PAYMENT DETAILS -->
+
+        <div class="ticket-payment">
+
+            <div>
+
+                <span>
+                    Payment Status
+                </span>
+
+                <strong>
+                    ✓ PAID
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    Payment Reference
+                </span>
+
+                <strong id="ticketPaymentReference">
+                    —
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- TICKET FOOTER -->
+
+        <div class="ticket-footer">
+
+            <p>
+                Please present this ticket when boarding.
+            </p>
+
+            <p>
+                Thank you for travelling with TransitPro.
+            </p>
+
+        </div>
+
+
+        <!-- ACTIONS -->
+
+        <div class="ticket-actions">
+
+            <button
+                type="button"
+                id="printTicketButton"
+                class="ticket-print-button"
+            >
+                🖨 Print Ticket
+            </button>
+
+
+            <button
+                type="button"
+                id="closeTicketButton"
+                class="ticket-secondary-button"
+            >
+                Close
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+        </section>
+
+
+
+        <!-- ======================================
+             FOOTER
+        ======================================= -->
+
+        <footer class="passenger-footer">
+
+            <p>
+                © 2026 TransitPro Transport Booking
+                Management System
+            </p>
+
+            <span>
+                Passenger Portal
+            </span>
+
+        </footer>
+
+
+    </main>
+
+
+
+    <!-- ==========================================
+         MOBILE OVERLAY
+    =========================================== -->
+
+    <div
+        class="sidebar-overlay"
+        id="sidebarOverlay"
+    ></div>
+
+
+
+    <!-- ==========================================
+         JAVASCRIPT
+    =========================================== -->
+
+    <script src="js/api.js"></script>
+
+    <script src="js/passenger-bookings.js"></script>
+
+
+</body>
+
+</html>

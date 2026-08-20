@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>TransitPro - Payments</title>
+
+<link rel="stylesheet" href="css/payment.css">
+
+
+</head>
+
+<body>
+
+
+<!-- ==========================================
+     PAGE
+=========================================== -->
+
+<div class="payment-page">
+
+    <!-- HEADER --><button
+    type="button"
+    class="back-button"
+    onclick="history.back()"
+>
+    ← Back
+</button>
+
+     
+
+    <header class="payment-header">
+
+        <div>
+            <h1>Payments</h1>
+            <p>Process and manage booking payments</p>
+        </div>
+
+        <a href="bookings.html" class="back-button">
+            ← Back to Bookings
+        </a>
+
+    </header>
+
+
+    <!-- ==========================================
+         MAIN CONTENT
+    =========================================== -->
+
+    <main class="payment-container">
+
+        <!-- PAYMENT CARD -->
+
+        <section class="payment-card">
+
+            <div class="card-header">
+
+                <div>
+                    <h2>Make Payment</h2>
+                    <p>Select a booking to continue</p>
+                </div>
+
+                <div class="payment-icon">
+                    ₦
+                </div>
+
+            </div>
+
+
+            <!-- ==========================================
+                 BOOKING SELECT
+            =========================================== -->
+
+            <div class="form-group">
+
+                <label for="bookingSelect">
+                    Select Booking
+                </label>
+
+                <select id="bookingSelect">
+
+                    <option value="">
+                        Loading bookings...
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- ==========================================
+                 BOOKING INFORMATION
+            =========================================== -->
+
+            <div
+                id="bookingInformation"
+                class="booking-information"
+                style="display: none;"
+            >
+
+                <div class="information-title">
+                    Booking Information
+                </div>
+
+
+                <div class="information-grid">
+
+                    <div class="info-item">
+
+                        <span class="info-label">
+                            Booking Reference
+                        </span>
+
+                        <strong
+                            id="bookingReference"
+                        >
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div class="info-item">
+
+                        <span class="info-label">
+                            Passenger
+                        </span>
+
+                        <strong
+                            id="passengerName"
+                        >
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div class="info-item">
+
+                        <span class="info-label">
+                            Phone
+                        </span>
+
+                        <strong
+                            id="passengerPhone"
+                        >
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div class="info-item">
+
+                        <span class="info-label">
+                            Route
+                        </span>
+
+                        <strong
+                            id="route"
+                        >
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div class="info-item">
+
+                        <span class="info-label">
+                            Departure
+                        </span>
+
+                        <strong
+                            id="departure"
+                        >
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div class="info-item">
+
+                        <span class="info-label">
+                            Seat
+                        </span>
+
+                        <strong
+                            id="seatNumber"
+                        >
+                            —
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ==========================================
+                     AMOUNT
+                =========================================== -->
+
+                <div class="amount-box">
+
+                    <span>
+                        Amount to Pay
+                    </span>
+
+                    <strong id="paymentAmount">
+                        ₦0.00
+                    </strong>
+
+                </div>
+
+
+                <!-- ==========================================
+                     PAYMENT STATUS
+                =========================================== -->
+
+                <div class="status-row">
+
+                    <span>
+                        Payment Status
+                    </span>
+
+                    <span
+                        id="paymentStatus"
+                        class="status pending"
+                    >
+                        Pending
+                    </span>
+
+                </div>
+
+
+                <!-- ==========================================
+                     PAY BUTTON
+                =========================================== -->
+
+                <button
+                    type="button"
+                    id="payNowButton"
+                    class="pay-button"
+                >
+                    Pay with Paystack
+                </button>
+
+            </div>
+
+
+            <!-- ==========================================
+                 EMPTY STATE
+            =========================================== -->
+
+            <div
+                id="emptyBookingMessage"
+                class="empty-message"
+            >
+                Select a booking to view payment details.
+            </div>
+
+        </section>
+
+
+        <!-- ==========================================
+             SUCCESS CARD
+        =========================================== -->
+
+        <section
+            id="successCard"
+            class="success-card"
+            style="display: none;"
+        >
+
+            <div class="success-icon">
+                ✓
+            </div>
+
+            <h2>
+                Payment Successful
+            </h2>
+
+            <p>
+                The payment has been verified successfully.
+            </p>
+
+
+            <div class="receipt-preview">
+
+                <div>
+                    <span>
+                        Payment Reference
+                    </span>
+
+                    <strong
+                        id="successPaymentReference"
+                    >
+                        —
+                    </strong>
+                </div>
+
+
+                <div>
+                    <span>
+                        Booking Reference
+                    </span>
+
+                    <strong
+                        id="successBookingReference"
+                    >
+                        —
+                    </strong>
+                </div>
+
+
+                <div>
+                    <span>
+                        Amount Paid
+                    </span>
+
+                    <strong
+                        id="successAmount"
+                    >
+                        ₦0.00
+                    </strong>
+                </div>
+
+            </div>
+
+
+            <div class="success-actions">
+
+                <button
+                    type="button"
+                    id="viewReceiptButton"
+                    class="receipt-button"
+                >
+                    View Receipt
+                </button>
+
+                <button
+                    type="button"
+                    id="newPaymentButton"
+                    class="secondary-button"
+                >
+                    New Payment
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- ==========================================
+     JAVASCRIPT
+=========================================== -->
+
+<script src="js/payment.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        My Profile | TransitPro
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/passenger-profile.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- ==========================================
+         SIDEBAR
+    =========================================== -->
+
+    <aside
+        class="passenger-sidebar"
+        id="passengerSidebar"
+    >
+
+        <!-- BRAND -->
+
+        <div class="sidebar-brand">
+
+            <div class="sidebar-brand-icon">
+                🚌
+            </div>
+
+            <div>
+
+                <h2>
+                    TransitPro
+                </h2>
+
+                <span>
+                    Passenger Portal
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- NAVIGATION -->
+
+        <nav class="passenger-nav">
+
+            <a
+                href="passenger-dashboard.html"
+                class="nav-item"
+            >
+
+                <span class="nav-icon">
+                    🏠
+                </span>
+
+                <span>
+                    Dashboard
+                </span>
+
+            </a>
+
+
+            <a
+                href="passenger-routes.html"
+                class="nav-item"
+            >
+
+                <span class="nav-icon">
+                    🗺️
+                </span>
+
+                <span>
+                    View Routes
+                </span>
+
+            </a>
+
+
+            <a
+                href="passenger-bookings.html"
+                class="nav-item"
+            >
+
+                <span class="nav-icon">
+                    🎫
+                </span>
+
+                <span>
+                    My Bookings
+                </span>
+
+            </a>
+
+
+            <a
+                href="passenger-payment.html"
+                class="nav-item"
+            >
+
+                <span class="nav-icon">
+                    💳
+                </span>
+
+                <span>
+                    Payments
+                </span>
+
+            </a>
+
+
+            <a
+                href="passenger-profile.html"
+                class="nav-item active"
+            >
+
+                <span class="nav-icon">
+                    👤
+                </span>
+
+                <span>
+                    My Profile
+                </span>
+
+            </a>
+
+        </nav>
+
+
+        <!-- SIDEBAR BOTTOM -->
+
+        <div class="sidebar-bottom">
+
+            <button
+                type="button"
+                id="logoutButton"
+                class="logout-button"
+            >
+
+                <span>
+                    🚪
+                </span>
+
+                <span>
+                    Logout
+                </span>
+
+            </button>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- ==========================================
+         MAIN CONTENT
+    =========================================== -->
+
+    <main class="passenger-main">
+
+
+        <!-- ======================================
+             TOPBAR
+        ======================================= -->
+
+        <header class="passenger-topbar">
+
+            <div class="topbar-left">
+
+                <button
+                    type="button"
+                    id="menuButton"
+                    class="menu-button"
+                    aria-label="Open menu"
+                >
+                    ☰
+                </button>
+
+
+                <div>
+
+                    <span class="page-label">
+                        PASSENGER PORTAL
+                    </span>
+
+                    <h1>
+                        My Profile
+                    </h1>
+
+                </div>
+
+            </div>
+
+
+            <div class="topbar-right">
+
+                <div class="notification-button">
+                    🔔
+                </div>
+
+
+                <div class="user-area">
+
+                    <div
+                        class="user-avatar"
+                        id="userAvatar"
+                    >
+                        P
+                    </div>
+
+
+                    <div class="user-details">
+
+                        <strong id="userName">
+                            Passenger
+                        </strong>
+
+                        <span id="userPhone">
+                            —
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- ======================================
+             PAGE CONTENT
+        ======================================= -->
+
+        <section class="passenger-content">
+
+
+            <!-- ==================================
+                 PAGE INTRO
+            =================================== -->
+
+            <div class="page-intro">
+
+                <div>
+
+                    <span class="intro-label">
+                        ACCOUNT SETTINGS
+                    </span>
+
+                    <h2>
+                        My Profile
+                    </h2>
+
+                    <p>
+                        Manage your personal information
+                        and account security.
+                    </p>
+
+                </div>
+
+
+                <div class="intro-icon">
+                    👤
+                </div>
+
+            </div>
+
+
+
+            <!-- ==================================
+                 PROFILE LAYOUT
+            =================================== -->
+
+            <div class="profile-layout">
+
+
+                <!-- =================================
+                     PROFILE SUMMARY
+                ================================== -->
+
+                <div class="profile-summary-card">
+
+                    <div class="profile-avatar-large">
+
+                        <span id="profileAvatar">
+                            P
+                        </span>
+
+                    </div>
+
+
+                    <h3 id="profileDisplayName">
+                        Passenger
+                    </h3>
+
+
+                    <p id="profileDisplayEmail">
+                        —
+                    </p>
+
+
+                    <span class="profile-role">
+                        Passenger
+                    </span>
+
+
+                    <div class="profile-summary-divider"></div>
+
+
+                    <div class="profile-summary-item">
+
+                        <span class="summary-icon">
+                            📅
+                        </span>
+
+                        <div>
+
+                            <span>
+                                Member Since
+                            </span>
+
+                            <strong id="memberSince">
+                                —
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="profile-summary-item">
+
+                        <span class="summary-icon">
+                            🎫
+                        </span>
+
+                        <div>
+
+                            <span>
+                                Total Bookings
+                            </span>
+
+                            <strong id="profileBookingCount">
+                                0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================
+                     PROFILE FORMS
+                ================================== -->
+
+                <div class="profile-main">
+
+
+                    <!-- =================================
+                         PERSONAL INFORMATION
+                    ================================== -->
+
+                    <div class="profile-card">
+
+                        <div class="profile-card-header">
+
+                            <div>
+
+                                <span class="card-label">
+                                    PERSONAL INFORMATION
+                                </span>
+
+                                <h3>
+                                    Profile Details
+                                </h3>
+
+                                <p>
+                                    Update your personal
+                                    information below.
+                                </p>
+
+                            </div>
+
+                            <div class="card-header-icon">
+                                👤
+                            </div>
+
+                        </div>
+
+
+                        <form
+                            id="profileForm"
+                            class="profile-form"
+                        >
+
+
+                            <!-- FULL NAME -->
+
+                            <div class="form-group">
+
+                                <label for="fullName">
+                                    Full Name
+                                </label>
+
+                                <div class="profile-input-wrapper">
+
+                                    <span class="profile-input-icon">
+                                        👤
+                                    </span>
+
+                                    <input
+                                        type="text"
+                                        id="fullName"
+                                        name="fullName"
+                                        placeholder="Enter your full name"
+                                        autocomplete="name"
+                                        required
+                                    >
+
+                                </div>
+
+                            </div>
+
+
+
+                            <!-- EMAIL -->
+
+                            <div class="form-group">
+
+                                <label for="email">
+                                    Email Address
+                                </label>
+
+                                <div class="profile-input-wrapper">
+
+                                    <span class="profile-input-icon">
+                                        📧
+                                    </span>
+
+                                    <input
+                                        type="email"
+                                        id="email"
+                                        name="email"
+                                        placeholder="Enter your email"
+                                        autocomplete="email"
+                                        required
+                                    >
+
+                                </div>
+
+                            </div>
+
+
+
+                            <!-- PHONE -->
+
+                            <div class="form-group">
+
+                                <label for="phone">
+                                    Phone Number
+                                </label>
+
+                                <div class="profile-input-wrapper">
+
+                                    <span class="profile-input-icon">
+                                        📱
+                                    </span>
+
+                                    <input
+                                        type="tel"
+                                        id="phone"
+                                        name="phone"
+                                        placeholder="Enter your phone number"
+                                        autocomplete="tel"
+                                    >
+
+                                </div>
+
+                            </div>
+
+
+
+                            <!-- ADDRESS -->
+
+                            <div class="form-group full-width">
+
+                                <label for="address">
+                                    Address
+                                </label>
+
+                                <div class="profile-input-wrapper">
+
+                                    <span class="profile-input-icon">
+                                        🏠
+                                    </span>
+
+                                    <textarea
+                                        id="address"
+                                        name="address"
+                                        rows="3"
+                                        placeholder="Enter your address"
+                                    ></textarea>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <!-- MESSAGE -->
+
+                            <div
+                                id="profileMessage"
+                                class="profile-message"
+                                aria-live="polite"
+                            ></div>
+
+
+
+                            <!-- BUTTONS -->
+
+                            <div class="form-actions">
+
+                                <button
+                                    type="button"
+                                    id="resetProfileButton"
+                                    class="secondary-button"
+                                >
+                                    Reset
+                                </button>
+
+
+                                <button
+                                    type="submit"
+                                    id="saveProfileButton"
+                                    class="primary-button"
+                                >
+                                    💾 Save Changes
+                                </button>
+
+                            </div>
+
+                        </form>
+
+                    </div>
+
+
+
+                    <!-- =================================
+                         CHANGE PASSWORD
+                    ================================== -->
+
+                    <div class="profile-card security-card">
+
+                        <div class="profile-card-header">
+
+                            <div>
+
+                                <span class="card-label">
+                                    ACCOUNT SECURITY
+                                </span>
+
+                                <h3>
+                                    Change Password
+                                </h3>
+
+                                <p>
+                                    Keep your account secure
+                                    by using a strong password.
+                                </p>
+
+                            </div>
+
+                            <div class="card-header-icon">
+                                🔐
+                            </div>
+
+                        </div>
+
+
+                        <form
+                            id="passwordForm"
+                            class="profile-form"
+                        >
+
+
+                            <!-- CURRENT PASSWORD -->
+
+                            <div class="form-group full-width">
+
+                                <label for="currentPassword">
+                                    Current Password
+                                </label>
+
+                                <div class="password-input-wrapper">
+
+                                    <span class="profile-input-icon">
+                                        🔑
+                                    </span>
+
+                                    <input
+                                        type="password"
+                                        id="currentPassword"
+                                        name="currentPassword"
+                                        placeholder="Enter current password"
+                                        autocomplete="current-password"
+                                        required
+                                    >
+
+                                    <button
+                                        type="button"
+                                        class="password-toggle"
+                                        data-target="currentPassword"
+                                        aria-label="Show password"
+                                    >
+                                        👁
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <!-- NEW PASSWORD -->
+
+                            <div class="form-group">
+
+                                <label for="newPassword">
+                                    New Password
+                                </label>
+
+                                <div class="password-input-wrapper">
+
+                                    <span class="profile-input-icon">
+                                        🔒
+                                    </span>
+
+                                    <input
+                                        type="password"
+                                        id="newPassword"
+                                        name="newPassword"
+                                        placeholder="Enter new password"
+                                        autocomplete="new-password"
+                                        minlength="6"
+                                        required
+                                    >
+
+                                    <button
+                                        type="button"
+                                        class="password-toggle"
+                                        data-target="newPassword"
+                                        aria-label="Show password"
+                                    >
+                                        👁
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <!-- CONFIRM PASSWORD -->
+
+                            <div class="form-group">
+
+                                <label for="confirmPassword">
+                                    Confirm New Password
+                                </label>
+
+                                <div class="password-input-wrapper">
+
+                                    <span class="profile-input-icon">
+                                        🔒
+                                    </span>
+
+                                    <input
+                                        type="password"
+                                        id="confirmPassword"
+                                        name="confirmPassword"
+                                        placeholder="Confirm new password"
+                                        autocomplete="new-password"
+                                        minlength="6"
+                                        required
+                                    >
+
+                                    <button
+                                        type="button"
+                                        class="password-toggle"
+                                        data-target="confirmPassword"
+                                        aria-label="Show password"
+                                    >
+                                        👁
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <!-- PASSWORD MESSAGE -->
+
+                            <div
+                                id="passwordMessage"
+                                class="profile-message"
+                                aria-live="polite"
+                            ></div>
+
+
+
+                            <!-- PASSWORD BUTTON -->
+
+                            <div class="form-actions">
+
+                                <button
+                                    type="submit"
+                                    id="changePasswordButton"
+                                    class="primary-button"
+                                >
+                                    🔐 Change Password
+                                </button>
+
+                            </div>
+
+                        </form>
+
+                    </div>
+
+
+
+                    <!-- =================================
+                         SECURITY INFORMATION
+                    ================================== -->
+
+                    <div class="security-info-card">
+
+                        <div class="security-info-icon">
+                            🛡️
+                        </div>
+
+                        <div>
+
+                            <h4>
+                                Keep Your Account Secure
+                            </h4>
+
+                            <p>
+                                Never share your password
+                                with anyone. Use a unique
+                                password that contains a
+                                combination of letters,
+                                numbers and symbols.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ======================================
+             FOOTER
+        ======================================= -->
+
+        <footer class="passenger-footer">
+
+            <p>
+                © 2026 TransitPro Transport Booking
+                Management System
+            </p>
+
+            <span>
+                Passenger Portal
+            </span>
+
+        </footer>
+
+
+    </main>
+
+
+
+    <!-- ==========================================
+         MOBILE OVERLAY
+    =========================================== -->
+
+    <div
+        class="sidebar-overlay"
+        id="sidebarOverlay"
+    ></div>
+
+
+
+    <!-- ==========================================
+         JAVASCRIPT
+    =========================================== -->
+
+    <script src="js/api.js"></script>
+
+    <script src="js/passenger-profile.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Reports | TransitPro</title>
+
+    <link
+        rel="stylesheet"
+        href="css/reports.css"
+    >
+
+</head>
+
+<body>
+
+<div class="app-layout">
+
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="brand">
+
+            <div class="brand-logo">
+                🚌
+            </div>
+
+            <div>
+                <h2>TransitPro</h2>
+                <small>Transport Management</small>
+            </div>
+
+        </div>
+
+
+        <nav class="navigation">
+
+            <a
+                href="dashboard.html"
+                class="nav-link"
+            >
+                <span>⌂</span>
+                <span>Dashboard</span>
+            </a>
+
+
+            <a
+                href="bookings.html"
+                class="nav-link"
+            >
+                <span>🎫</span>
+                <span>Bookings</span>
+            </a>
+
+
+            <a
+                href="buses.html"
+                class="nav-link"
+            >
+                <span>🚌</span>
+                <span>Buses</span>
+            </a>
+
+
+            <a
+                href="routes.html"
+                class="nav-link"
+            >
+                <span>🛣️</span>
+                <span>Routes</span>
+            </a>
+
+
+            <a
+                href="trips.html"
+                class="nav-link"
+            >
+                <span>📅</span>
+                <span>Trips</span>
+            </a>
+
+
+            <a
+                href="drivers.html"
+                class="nav-link"
+            >
+                <span>👨‍✈️</span>
+                <span>Drivers</span>
+            </a>
+
+
+            <a
+                href="passengers.html"
+                class="nav-link"
+            >
+                <span>👥</span>
+                <span>Passengers</span>
+            </a>
+
+
+            <a
+                href="payment.html"
+                class="nav-link"
+            >
+                <span>💳</span>
+                <span>Payments</span>
+            </a>
+
+
+            <a
+                href="reports.html"
+                class="nav-link active"
+            >
+                <span>📊</span>
+                <span>Reports</span>
+            </a>
+
+
+            <div class="nav-divider"></div>
+
+
+            <a
+                href="settings.html"
+                class="nav-link"
+            >
+                <span>⚙️</span>
+                <span>Settings</span>
+            </a>
+
+        </nav>
+
+
+        <button
+            id="logout"
+            class="logout-button"
+            type="button"
+        >
+            <span>↪</span>
+            <span>Logout</span>
+        </button>
+
+    </aside>
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
+
+    <main class="main-content">
+
+
+        <!-- =========================
+             TOPBAR
+        ========================== -->
+
+        <header class="topbar">
+
+            <div class="topbar-left">
+
+                <button
+                    id="menuButton"
+                    class="menu-button"
+                    type="button"
+                >
+                    ☰
+                </button>
+
+                <div>
+
+                    <h1>Reports</h1>
+
+                    <p>
+                        Analyze bookings, revenue,
+                        passengers and trips.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="topbar-right">
+
+                <button
+                    class="notification"
+                    type="button"
+                >
+                    🔔
+                    <span></span>
+                </button>
+
+
+                <div class="profile">
+
+                    <div
+                        class="avatar"
+                        id="avatar"
+                    >
+                        SA
+                    </div>
+
+                    <div class="profile-info">
+
+                        <strong id="userName">
+                            Administrator
+                        </strong>
+
+                        <small id="userRole">
+                            Administrator
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- =========================
+             REPORT CONTENT
+        ========================== -->
+
+        <section class="reports-content">
+
+
+            <!-- =========================
+                 REPORT HEADER
+            ========================== -->
+
+            <div class="report-header">
+
+                <div>
+
+                    <h2>Transport Reports</h2>
+
+                    <p>
+                        View and analyze your transport
+                        business performance.
+                    </p>
+
+                </div>
+
+
+                <div class="report-actions">
+
+                    <button
+                        id="printReport"
+                        class="btn-primary"
+                        type="button"
+                    >
+                        🖨️ Print Report
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 FILTERS
+            ========================== -->
+
+            <div class="report-filter-card">
+
+                <div class="filter-title">
+
+                    <div>
+
+                        <h3>Report Filters</h3>
+
+                        <p>
+                            Select a date range to generate
+                            your report.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <form
+                    id="reportFilterForm"
+                    class="report-filter-form"
+                >
+
+                    <div class="form-group">
+
+                        <label for="startDate">
+                            Start Date
+                        </label>
+
+                        <input
+                            type="date"
+                            id="startDate"
+                            name="startDate"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="endDate">
+                            End Date
+                        </label>
+
+                        <input
+                            type="date"
+                            id="endDate"
+                            name="endDate"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="reportType">
+                            Report Type
+                        </label>
+
+                        <select
+                            id="reportType"
+                            name="reportType"
+                        >
+
+                            <option value="overview">
+                                Overview
+                            </option>
+
+                            <option value="bookings">
+                                Bookings
+                            </option>
+
+                            <option value="revenue">
+                                Revenue
+                            </option>
+
+                            <option value="passengers">
+                                Passengers
+                            </option>
+
+                            <option value="trips">
+                                Trips
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="btn-primary"
+                    >
+                        📊 Generate Report
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <!-- =========================
+                 SUMMARY CARDS
+            ========================== -->
+
+            <div class="report-stats">
+
+
+                <div class="report-stat-card">
+
+                    <div class="report-stat-icon booking">
+                        🎫
+                    </div>
+
+                    <div class="report-stat-info">
+
+                        <span>
+                            Total Bookings
+                        </span>
+
+                        <strong id="totalBookings">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="report-stat-card">
+
+                    <div class="report-stat-icon revenue">
+                        💰
+                    </div>
+
+                    <div class="report-stat-info">
+
+                        <span>
+                            Total Revenue
+                        </span>
+
+                        <strong id="totalRevenue">
+                            ₦0.00
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="report-stat-card">
+
+                    <div class="report-stat-icon passenger">
+                        👥
+                    </div>
+
+                    <div class="report-stat-info">
+
+                        <span>
+                            Passengers
+                        </span>
+
+                        <strong id="totalPassengers">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="report-stat-card">
+
+                    <div class="report-stat-icon trip">
+                        🚌
+                    </div>
+
+                    <div class="report-stat-info">
+
+                        <span>
+                            Trips
+                        </span>
+
+                        <strong id="totalTrips">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 BOOKING STATUS
+            ========================== -->
+
+            <div class="report-grid">
+
+
+                <div class="report-card">
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <h3>
+                                Booking Status
+                            </h3>
+
+                            <p>
+                                Current booking distribution
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="status-report">
+
+
+                        <div class="status-row">
+
+                            <div class="status-label">
+
+                                <span class="status-dot pending"></span>
+
+                                <span>
+                                    Pending
+                                </span>
+
+                            </div>
+
+                            <strong id="pendingBookings">
+                                0
+                            </strong>
+
+                        </div>
+
+
+                        <div class="status-row">
+
+                            <div class="status-label">
+
+                                <span class="status-dot confirmed"></span>
+
+                                <span>
+                                    Confirmed
+                                </span>
+
+                            </div>
+
+                            <strong id="confirmedBookings">
+                                0
+                            </strong>
+
+                        </div>
+
+
+                        <div class="status-row">
+
+                            <div class="status-label">
+
+                                <span class="status-dot cancelled"></span>
+
+                                <span>
+                                    Cancelled
+                                </span>
+
+                            </div>
+
+                            <strong id="cancelledBookings">
+                                0
+                            </strong>
+
+                        </div>
+
+
+                        <div class="status-row">
+
+                            <div class="status-label">
+
+                                <span class="status-dot completed"></span>
+
+                                <span>
+                                    Completed
+                                </span>
+
+                            </div>
+
+                            <strong id="completedBookings">
+                                0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================
+                     PAYMENT SUMMARY
+                ========================== -->
+
+                <div class="report-card">
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <h3>
+                                Payment Summary
+                            </h3>
+
+                            <p>
+                                Payment status overview
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="payment-summary">
+
+
+                        <div class="payment-item">
+
+                            <span>
+                                💳 Paid
+                            </span>
+
+                            <strong id="paidAmount">
+                                ₦0.00
+                            </strong>
+
+                        </div>
+
+
+                        <div class="payment-item">
+
+                            <span>
+                                ⏳ Pending
+                            </span>
+
+                            <strong id="pendingAmount">
+                                ₦0.00
+                            </strong>
+
+                        </div>
+
+
+                        <div class="payment-item">
+
+                            <span>
+                                ❌ Failed
+                            </span>
+
+                            <strong id="failedAmount">
+                                ₦0.00
+                            </strong>
+
+                        </div>
+
+
+                        <div class="payment-item total">
+
+                            <span>
+                                Total
+                            </span>
+
+                            <strong id="paymentTotal">
+                                ₦0.00
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 TOP ROUTES
+            ========================== -->
+
+            <div class="report-card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <h3>
+                            Top Routes
+                        </h3>
+
+                        <p>
+                            Routes with the highest booking activity
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="table-wrapper">
+
+                    <table class="report-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    #
+                                </th>
+
+                                <th>
+                                    Route
+                                </th>
+
+                                <th>
+                                    Bookings
+                                </th>
+
+                                <th>
+                                    Revenue
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="topRoutesBody">
+
+                            <tr>
+
+                                <td
+                                    colspan="4"
+                                    class="table-loading"
+                                >
+                                    Loading report...
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 RECENT REPORT BOOKINGS
+            ========================== -->
+
+            <div class="report-card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <h3>
+                            Recent Bookings
+                        </h3>
+
+                        <p>
+                            Latest booking activity
+                        </p>
+
+                    </div>
+
+                    <a
+                        href="bookings.html"
+                        class="view-link"
+                    >
+                        View All
+                    </a>
+
+                </div>
+
+
+                <div class="table-wrapper">
+
+                    <table class="report-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Reference
+                                </th>
+
+                                <th>
+                                    Passenger
+                                </th>
+
+                                <th>
+                                    Route
+                                </th>
+
+                                <th>
+                                    Date
+                                </th>
+
+                                <th>
+                                    Amount
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="recentBookingsBody">
+
+                            <tr>
+
+                                <td
+                                    colspan="6"
+                                    class="table-loading"
+                                >
+                                    Loading bookings...
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<script src="js/reports.js"></script>
+
+</body>
+
+</html>
+

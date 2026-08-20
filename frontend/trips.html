@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Trips | TransitPro</title>
+
+    <link
+        rel="stylesheet"
+        href="css/dashboard.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/trips.css"
+    >
+
+</head>
+
+
+<body>
+
+    <!-- =========================================
+         SIDEBAR
+    ========================================== -->
+
+    <div id="sidebar-container"></div>
+
+
+    <!-- =========================================
+         MAIN CONTENT
+    ========================================== -->
+
+    <main class="main-content">
+
+        <!-- TOP HEADER -->
+         <button
+    type="button"
+    class="back-button"
+    onclick="history.back()"
+>
+    ← Back
+</button>
+
+        <div class="page-header">
+
+            <div>
+
+                <span class="page-label">
+                    TRANSPORT MANAGEMENT
+                </span>
+
+                <h1>
+                    Trips
+                </h1>
+
+                <p>
+                    Manage scheduled and active
+                    transport trips.
+                </p>
+
+            </div>
+
+
+            <button
+                class="primary-btn"
+                id="openCreateTrip"
+            >
+
+                <span>+</span>
+
+                Create Trip
+
+            </button>
+
+        </div>
+
+
+        <!-- =====================================
+             STATISTICS
+        ====================================== -->
+
+        <section class="trip-statistics">
+
+
+            <!-- TOTAL -->
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    🚍
+                </div>
+
+                <div>
+
+                    <span>
+                        Total Trips
+                    </span>
+
+                    <strong id="totalTrips">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- SCHEDULED -->
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    📅
+                </div>
+
+                <div>
+
+                    <span>
+                        Scheduled
+                    </span>
+
+                    <strong id="scheduledTrips">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- BOARDING -->
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    🚌
+                </div>
+
+                <div>
+
+                    <span>
+                        Boarding
+                    </span>
+
+                    <strong id="boardingTrips">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- COMPLETED -->
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    ✓
+                </div>
+
+                <div>
+
+                    <span>
+                        Completed
+                    </span>
+
+                    <strong id="completedTrips">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =====================================
+             TRIPS SECTION
+        ====================================== -->
+
+        <section class="trips-section">
+
+
+            <!-- TOOLBAR -->
+
+            <div class="table-toolbar">
+
+                <div>
+
+                    <h2>
+                        All Trips
+                    </h2>
+
+                    <p>
+                        View and manage all trips.
+                    </p>
+
+                </div>
+
+
+                <div class="search-box">
+
+                    <span>
+                        🔍
+                    </span>
+
+                    <input
+                        type="text"
+                        id="tripSearch"
+                        placeholder="Search trips..."
+                    >
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================
+                 TABLE
+            ================================== -->
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Trip
+                            </th>
+
+                            <th>
+                                Route
+                            </th>
+
+                            <th>
+                                Bus
+                            </th>
+
+                            <th>
+                                Driver
+                            </th>
+
+                            <th>
+                                Departure
+                            </th>
+
+                            <th>
+                                Fare
+                            </th>
+
+                            <th>
+                                Seats
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
+                            <th>
+                                Actions
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="tripsTableBody">
+
+                        <tr>
+
+                            <td
+                                colspan="9"
+                                class="loading-cell"
+                            >
+
+                                Loading trips...
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <!-- EMPTY STATE -->
+
+            <div
+                id="emptyTrips"
+                class="empty-state"
+                style="display:none;"
+            >
+
+                <div class="empty-icon">
+                    🚍
+                </div>
+
+                <h3>
+                    No trips found
+                </h3>
+
+                <p>
+                    Create your first trip to
+                    get started.
+                </p>
+
+            </div>
+
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+    <!-- =========================================
+     CREATE TRIP MODAL
+========================================== -->
+
+<div
+    id="createTripModal"
+    class="modal-overlay"
+    style="display: none;"
+>
+
+    <div class="trip-modal">
+
+        <div class="modal-header">
+
+            <div>
+
+                <span class="page-label">
+                    TRIP MANAGEMENT
+                </span>
+
+                <h2>
+                    Create New Trip
+                </h2>
+
+                <p>
+                    Schedule a new transport trip.
+                </p>
+
+            </div>
+
+            <button
+                type="button"
+                class="modal-close"
+                id="closeCreateTrip"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <form id="createTripForm">
+
+            <div class="form-grid">
+
+                <!-- ROUTE -->
+
+                <div class="form-group">
+
+                    <label for="route_id">
+                        Route
+                    </label>
+
+                    <select
+                        id="route_id"
+                        name="route_id"
+                        required
+                    >
+
+                        <option value="">
+                            Select route
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- BUS -->
+
+                <div class="form-group">
+
+                    <label for="bus_id">
+                        Bus
+                    </label>
+
+                    <select
+                        id="bus_id"
+                        name="bus_id"
+                        required
+                    >
+
+                        <option value="">
+                            Select bus
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- DRIVER -->
+
+                <div class="form-group">
+
+                    <label for="driver_id">
+                        Driver
+                    </label>
+
+                    <select
+                        id="driver_id"
+                        name="driver_id"
+                        required
+                    >
+
+                        <option value="">
+                            Select driver
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- DEPARTURE DATE -->
+
+                <div class="form-group">
+
+                    <label for="departure_date">
+                        Departure Date
+                    </label>
+
+                    <input
+                        type="date"
+                        id="departure_date"
+                        name="departure_date"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- DEPARTURE TIME -->
+
+                <div class="form-group">
+
+                    <label for="departure_time">
+                        Departure Time
+                    </label>
+
+                    <input
+                        type="time"
+                        id="departure_time"
+                        name="departure_time"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- ARRIVAL TIME -->
+
+                <div class="form-group">
+
+                    <label for="arrival_time">
+                        Arrival Time
+                    </label>
+
+                    <input
+                        type="time"
+                        id="arrival_time"
+                        name="arrival_time"
+                    >
+
+                </div>
+
+
+                <!-- FARE -->
+
+                <div class="form-group">
+
+                    <label for="fare">
+                        Fare (₦)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="fare"
+                        name="fare"
+                        min="1"
+                        step="0.01"
+                        placeholder="e.g. 6500"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- AVAILABLE SEATS -->
+
+                <div class="form-group">
+
+                    <label for="available_seats">
+                        Available Seats
+                    </label>
+
+                    <input
+                        type="number"
+                        id="available_seats"
+                        name="available_seats"
+                        min="1"
+                        placeholder="e.g. 50"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- STATUS -->
+
+                <div class="form-group full-width">
+
+                    <label for="status">
+                        Status
+                    </label>
+
+                    <select
+                        id="status"
+                        name="status"
+                    >
+
+                        <option value="scheduled">
+                            Scheduled
+                        </option>
+
+                        <option value="boarding">
+                            Boarding
+                        </option>
+
+                        <option value="departed">
+                            Departed
+                        </option>
+
+                        <option value="completed">
+                            Completed
+                        </option>
+
+                        <option value="cancelled">
+                            Cancelled
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <!-- MODAL ACTIONS -->
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    class="cancel-btn"
+                    id="cancelCreateTrip"
+                >
+                    Cancel
+                </button>
+
+                <button
+                    type="submit"
+                    class="primary-btn"
+                >
+                    Create Trip
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+<!-- ==========================================
+     EDIT TRIP MODAL
+========================================== -->
+
+<div
+    class="modal-overlay"
+    id="editTripModal"
+    style="display: none;"
+>
+
+    <div class="trip-modal">
+
+        <div class="modal-header">
+
+            <div>
+                <span class="page-label">
+                    TRIP MANAGEMENT
+                </span>
+
+                <h2>Edit Trip</h2>
+
+                <p>
+                    Update trip information
+                </p>
+            </div>
+
+            <button
+                type="button"
+                class="modal-close"
+                id="closeEditTrip"
+            >
+                &times;
+            </button>
+
+        </div>
+
+
+        <form id="editTripForm">
+
+            <div class="form-grid">
+
+                <!-- ROUTE -->
+
+                <div class="form-group">
+
+                    <label for="edit_route_id">
+                        Route
+                    </label>
+
+                    <select
+                        id="edit_route_id"
+                        required
+                    >
+
+                        <option value="">
+                            Select Route
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- BUS -->
+
+                <div class="form-group">
+
+                    <label for="edit_bus_id">
+                        Bus
+                    </label>
+
+                    <select
+                        id="edit_bus_id"
+                        required
+                    >
+
+                        <option value="">
+                            Select Bus
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- DRIVER -->
+
+                <div class="form-group">
+
+                    <label for="edit_driver_id">
+                        Driver
+                    </label>
+
+                    <select
+                        id="edit_driver_id"
+                        required
+                    >
+
+                        <option value="">
+                            Select Driver
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- DATE -->
+
+                <div class="form-group">
+
+                    <label for="edit_departure_date">
+                        Departure Date
+                    </label>
+
+                    <input
+                        type="date"
+                        id="edit_departure_date"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- DEPARTURE TIME -->
+
+                <div class="form-group">
+
+                    <label for="edit_departure_time">
+                        Departure Time
+                    </label>
+
+                    <input
+                        type="time"
+                        id="edit_departure_time"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- ARRIVAL TIME -->
+
+                <div class="form-group">
+
+                    <label for="edit_arrival_time">
+                        Arrival Time
+                    </label>
+
+                    <input
+                        type="time"
+                        id="edit_arrival_time"
+                    >
+
+                </div>
+
+
+                <!-- FARE -->
+
+                <div class="form-group">
+
+                    <label for="edit_fare">
+                        Fare
+                    </label>
+
+                    <input
+                        type="number"
+                        id="edit_fare"
+                        min="1"
+                        step="0.01"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- AVAILABLE SEATS -->
+
+                <div class="form-group">
+
+                    <label for="edit_available_seats">
+                        Available Seats
+                    </label>
+
+                    <input
+                        type="number"
+                        id="edit_available_seats"
+                        min="1"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- STATUS -->
+
+                <div class="form-group">
+
+                    <label for="edit_status">
+                        Status
+                    </label>
+
+                    <select
+                        id="edit_status"
+                        required
+                    >
+
+                        <option value="scheduled">
+                            Scheduled
+                        </option>
+
+                        <option value="boarding">
+                            Boarding
+                        </option>
+
+                        <option value="completed">
+                            Completed
+                        </option>
+
+                        <option value="cancelled">
+                            Cancelled
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    class="cancel-btn"
+                    id="cancelEditTrip"
+                >
+                    Cancel
+                </button>
+
+                <button
+                    type="submit"
+                    class="primary-btn"
+                    id="updateTripButton"
+                >
+                    Update Trip
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+    <script src="js/trips.js"></script>
+
+</body>
+
+</html>

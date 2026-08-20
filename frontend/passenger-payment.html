@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Payments | TransitPro
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/passenger-payment.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- ==========================================
+         SIDEBAR
+    =========================================== -->
+
+    <aside
+        class="passenger-sidebar"
+        id="passengerSidebar"
+    >
+
+        <div class="sidebar-brand">
+
+            <div class="sidebar-brand-icon">
+                🚌
+            </div>
+
+            <div>
+
+                <h2>
+                    TransitPro
+                </h2>
+
+                <span>
+                    Passenger Portal
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             NAVIGATION
+        ======================================= -->
+
+        <nav class="passenger-nav">
+
+            <a
+                href="passenger-dashboard.html"
+                class="nav-item"
+            >
+
+                <span class="nav-icon">
+                    🏠
+                </span>
+
+                <span>
+                    Dashboard
+                </span>
+
+            </a>
+
+
+            <a
+                href="passenger-routes.html"
+                class="nav-item"
+            >
+
+                <span class="nav-icon">
+                    🗺️
+                </span>
+
+                <span>
+                    View Routes
+                </span>
+
+            </a>
+
+
+            <a
+                href="passenger-bookings.html"
+                class="nav-item"
+            >
+
+                <span class="nav-icon">
+                    🎫
+                </span>
+
+                <span>
+                    My Bookings
+                </span>
+
+            </a>
+
+
+            <a
+                href="passenger-payment.html"
+                class="nav-item active"
+            >
+
+                <span class="nav-icon">
+                    💳
+                </span>
+
+                <span>
+                    Payments
+                </span>
+
+            </a>
+
+
+            <a
+                href="passenger-profile.html"
+                class="nav-item"
+            >
+
+                <span class="nav-icon">
+                    👤
+                </span>
+
+                <span>
+                    My Profile
+                </span>
+
+            </a>
+
+        </nav>
+
+
+        <!-- ======================================
+             SIDEBAR BOTTOM
+        ======================================= -->
+
+        <div class="sidebar-bottom">
+
+            <button
+                type="button"
+                id="logoutButton"
+                class="logout-button"
+            >
+
+                <span>
+                    🚪
+                </span>
+
+                <span>
+                    Logout
+                </span>
+
+            </button>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- ==========================================
+         MAIN CONTENT
+    =========================================== -->
+
+    <main class="passenger-main">
+
+
+        <!-- ======================================
+             TOPBAR
+        ======================================= -->
+
+        <header class="passenger-topbar">
+
+            <div class="topbar-left">
+
+                <button
+                    type="button"
+                    id="menuButton"
+                    class="menu-button"
+                    aria-label="Open menu"
+                >
+                    ☰
+                </button>
+
+
+                <div>
+
+                    <span class="page-label">
+                        PASSENGER PORTAL
+                    </span>
+
+                    <h1>
+                        Payments
+                    </h1>
+
+                </div>
+
+            </div>
+
+
+            <div class="topbar-right">
+
+                <div class="notification-button">
+                    🔔
+                </div>
+
+
+                <div class="user-area">
+
+                    <div
+                        class="user-avatar"
+                        id="userAvatar"
+                    >
+                        P
+                    </div>
+
+
+                    <div class="user-details">
+
+                        <strong id="userName">
+                            Passenger
+                        </strong>
+
+                        <span id="userPhone">
+                            —
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- ======================================
+             PAGE CONTENT
+        ======================================= -->
+
+        <section class="passenger-content">
+
+
+            <!-- ==================================
+                 PAGE INTRO
+            =================================== -->
+
+            <div class="page-intro">
+
+                <div>
+
+                    <span class="intro-label">
+                        PAYMENT MANAGEMENT
+                    </span>
+
+                    <h2>
+                        Your Payments
+                    </h2>
+
+                    <p>
+                        View your payment history and
+                        manage payments for your bookings.
+                    </p>
+
+                </div>
+
+
+                <div class="intro-icon">
+                    💳
+                </div>
+
+            </div>
+
+
+
+            <!-- ==================================
+                 PAYMENT STATISTICS
+            =================================== -->
+
+            <div class="payment-stats">
+
+
+                <!-- TOTAL PAID -->
+
+                <div class="payment-stat-card">
+
+                    <div class="payment-stat-icon purple">
+                        💰
+                    </div>
+
+                    <div class="payment-stat-information">
+
+                        <span>
+                            Total Paid
+                        </span>
+
+                        <strong id="totalPaid">
+                            ₦0.00
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- SUCCESSFUL -->
+
+                <div class="payment-stat-card">
+
+                    <div class="payment-stat-icon green">
+                        ✓
+                    </div>
+
+                    <div class="payment-stat-information">
+
+                        <span>
+                            Successful Payments
+                        </span>
+
+                        <strong id="successfulPayments">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- PENDING -->
+
+                <div class="payment-stat-card">
+
+                    <div class="payment-stat-icon orange">
+                        ⏳
+                    </div>
+
+                    <div class="payment-stat-information">
+
+                        <span>
+                            Pending Payments
+                        </span>
+
+                        <strong id="pendingPayments">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- FAILED -->
+
+                <div class="payment-stat-card">
+
+                    <div class="payment-stat-icon red">
+                        ✕
+                    </div>
+
+                    <div class="payment-stat-information">
+
+                        <span>
+                            Failed Payments
+                        </span>
+
+                        <strong id="failedPayments">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ==================================
+                 PAYMENT INFORMATION CARD
+            =================================== -->
+
+            <div class="payment-info-card">
+
+                <div class="payment-info-icon">
+                    🔐
+                </div>
+
+
+                <div class="payment-info-content">
+
+                    <h3>
+                        Secure Payments
+                    </h3>
+
+                    <p>
+                        Your payment information is handled
+                        securely. Always verify your booking
+                        reference before making a payment.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ==================================
+                 PAYMENT HISTORY HEADER
+            =================================== -->
+
+            <div class="section-header">
+
+                <div>
+
+                    <span class="card-label">
+                        TRANSACTION HISTORY
+                    </span>
+
+                    <h3>
+                        Payment History
+                    </h3>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    id="refreshPayments"
+                    class="refresh-button"
+                >
+                    🔄 Refresh
+                </button>
+
+            </div>
+
+
+
+            <!-- ==================================
+                 FILTER CARD
+            =================================== -->
+
+            <div class="filter-card">
+
+                <div class="payment-filters">
+
+
+                    <!-- SEARCH -->
+
+                    <div class="filter-group">
+
+                        <label for="paymentSearch">
+                            Search
+                        </label>
+
+                        <div class="filter-input-wrapper">
+
+                            <span>
+                                🔍
+                            </span>
+
+                            <input
+                                type="text"
+                                id="paymentSearch"
+                                placeholder="Reference or booking..."
+                            >
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- STATUS -->
+
+                    <div class="filter-group">
+
+                        <label for="paymentStatusFilter">
+                            Payment Status
+                        </label>
+
+                        <select
+                            id="paymentStatusFilter"
+                        >
+
+                            <option value="all">
+                                All Status
+                            </option>
+
+                            <option value="successful">
+                                Successful
+                            </option>
+
+                            <option value="pending">
+                                Pending
+                            </option>
+
+                            <option value="failed">
+                                Failed
+                            </option>
+
+                            <option value="cancelled">
+                                Cancelled
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <!-- DATE -->
+
+                    <div class="filter-group">
+
+                        <label for="paymentDateFilter">
+                            Payment Date
+                        </label>
+
+                        <input
+                            type="date"
+                            id="paymentDateFilter"
+                        >
+
+                    </div>
+
+
+
+                    <!-- CLEAR -->
+
+                    <button
+                        type="button"
+                        id="clearPaymentFilters"
+                        class="clear-filter-button"
+                    >
+                        Clear Filters
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ==================================
+                 RESULTS HEADER
+            =================================== -->
+
+            <div class="results-header">
+
+                <div>
+
+                    <span class="card-label">
+                        PAYMENTS
+                    </span>
+
+                    <h3>
+
+                        <span id="resultsCount">
+                            0
+                        </span>
+
+                        Transactions
+
+                    </h3>
+
+                </div>
+
+
+                <a
+                    href="passenger-bookings.html"
+                    class="bookings-button"
+                >
+                    🎫 View My Bookings
+                </a>
+
+            </div>
+
+
+
+            <!-- ==================================
+                 LOADING STATE
+            =================================== -->
+
+            <div
+                id="loadingState"
+                class="loading-state"
+            >
+
+                <div class="loading-spinner"></div>
+
+                <p>
+                    Loading payment history...
+                </p>
+
+            </div>
+
+
+
+            <!-- ==================================
+                 ERROR STATE
+            =================================== -->
+
+            <div
+                id="errorState"
+                class="error-state"
+                style="display: none;"
+            >
+
+                <div class="error-icon">
+                    ⚠️
+                </div>
+
+                <h3>
+                    Unable to Load Payments
+                </h3>
+
+                <p id="errorMessage">
+                    Something went wrong.
+                </p>
+
+                <button
+                    type="button"
+                    id="retryButton"
+                    class="retry-button"
+                >
+                    Try Again
+                </button>
+
+            </div>
+
+
+
+            <!-- ==================================
+                 PAYMENT TABLE
+            =================================== -->
+
+            <div
+                id="paymentsContainer"
+                class="payments-card"
+            >
+
+                <div class="table-wrapper">
+
+                    <table class="payment-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Transaction
+                                </th>
+
+                                <th>
+                                    Booking Reference
+                                </th>
+
+                                <th>
+                                    Route
+                                </th>
+
+                                <th>
+                                    Date
+                                </th>
+
+                                <th>
+                                    Amount
+                                </th>
+
+                                <th>
+                                    Method
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+                                <th>
+                                    Action
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody
+                            id="paymentsTableBody"
+                        >
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ==================================
+                 EMPTY STATE
+            =================================== -->
+
+            <div
+                id="emptyState"
+                class="empty-state"
+                style="display: none;"
+            >
+
+                <div class="empty-icon">
+                    💳
+                </div>
+
+                <h3>
+                    No Payments Found
+                </h3>
+
+                <p>
+                    You don't have any payment
+                    transactions matching your search.
+                </p>
+
+                <a
+                    href="passenger-bookings.html"
+                    class="small-button"
+                >
+                    🎫 View Bookings
+                </a>
+
+            </div>
+
+
+
+            <!-- ==================================
+                 PAYMENT DETAILS MODAL
+            =================================== -->
+
+            <div
+                id="paymentModal"
+                class="payment-modal"
+                aria-hidden="true"
+            >
+
+                <div class="payment-modal-content">
+
+
+                    <!-- MODAL HEADER -->
+
+                    <div class="modal-header">
+
+                        <div>
+
+                            <span class="card-label">
+                                PAYMENT DETAILS
+                            </span>
+
+                            <h3>
+                                Transaction Information
+                            </h3>
+
+                        </div>
+
+
+                        <button
+                            type="button"
+                            id="closePaymentModal"
+                            class="modal-close"
+                            aria-label="Close"
+                        >
+                            ✕
+                        </button>
+
+                    </div>
+
+
+
+                    <!-- MODAL BODY -->
+
+                    <div
+                        id="paymentDetails"
+                        class="payment-details"
+                    >
+
+                        <!-- JS INSERTS DETAILS -->
+
+                    </div>
+
+
+
+                    <!-- MODAL FOOTER -->
+
+                    <div class="modal-footer">
+
+                        <button
+                            type="button"
+                            id="closePaymentModalBottom"
+                            class="modal-secondary-button"
+                        >
+                            Close
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+        </section>
+
+
+
+        <!-- ======================================
+             FOOTER
+        ======================================= -->
+
+        <footer class="passenger-footer">
+
+            <p>
+                © 2026 TransitPro Transport Booking
+                Management System
+            </p>
+
+            <span>
+                Passenger Portal
+            </span>
+
+        </footer>
+
+
+    </main>
+
+
+
+    <!-- ==========================================
+         MOBILE OVERLAY
+    =========================================== -->
+
+    <div
+        class="sidebar-overlay"
+        id="sidebarOverlay"
+    ></div>
+
+
+
+    <!-- ==========================================
+         JAVASCRIPT
+    =========================================== -->
+
+    <script src="js/api.js"></script>
+
+    <script src="js/passenger-payment.js"></script>
+
+
+</body>
+
+</html>

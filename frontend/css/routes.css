@@ -1,0 +1,1137 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background: #f5f7fb;
+
+    color: #172033;
+
+}
+
+
+button,
+input,
+select {
+
+    font-family: inherit;
+
+}
+
+
+.routes-page {
+
+    width: 100%;
+
+    min-height: 100vh;
+
+    padding: 32px;
+
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.page-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 28px;
+
+}
+
+
+.page-label {
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+
+    color: #2563eb;
+
+}
+
+
+.page-header h1 {
+
+    margin-top: 6px;
+
+    font-size: 30px;
+
+    font-weight: 700;
+
+}
+
+
+.page-header p {
+
+    margin-top: 7px;
+
+    color: #6b7280;
+
+    font-size: 14px;
+
+}
+
+
+.add-route-btn {
+
+    border: none;
+
+    background: #2563eb;
+
+    color: white;
+
+    padding: 13px 20px;
+
+    border-radius: 10px;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    transition: 0.2s;
+
+}
+
+
+.add-route-btn:hover {
+
+    transform: translateY(-1px);
+
+    background: #1d4ed8;
+
+}
+
+
+.add-route-btn span {
+
+    font-size: 20px;
+
+    line-height: 12px;
+
+}
+
+
+/* =========================================
+   STATISTICS
+========================================= */
+
+.statistics-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 18px;
+
+    margin-bottom: 24px;
+
+}
+
+
+.stat-card {
+
+    background: white;
+
+    border: 1px solid #e8ebf1;
+
+    border-radius: 14px;
+
+    padding: 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+}
+
+
+.stat-icon {
+
+    width: 46px;
+
+    height: 46px;
+
+    border-radius: 12px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 21px;
+
+    font-weight: 700;
+
+}
+
+
+.total-icon {
+
+    background: #e8f0ff;
+
+    color: #2563eb;
+
+}
+
+
+.active-icon {
+
+    background: #e8f8ef;
+
+    color: #16a34a;
+
+}
+
+
+.inactive-icon {
+
+    background: #fff0f0;
+
+    color: #dc2626;
+
+}
+
+
+.fare-icon {
+
+    background: #fff7e6;
+
+    color: #d97706;
+
+}
+
+
+.stat-card span {
+
+    display: block;
+
+    color: #6b7280;
+
+    font-size: 12px;
+
+    margin-bottom: 5px;
+
+}
+
+
+.stat-card strong {
+
+    font-size: 23px;
+
+}
+
+
+/* =========================================
+   ROUTES CARD
+========================================= */
+
+.routes-card {
+
+    background: white;
+
+    border: 1px solid #e8ebf1;
+
+    border-radius: 14px;
+
+    overflow: hidden;
+
+}
+
+
+/* =========================================
+   TOOLBAR
+========================================= */
+
+.routes-toolbar {
+
+    padding: 18px;
+
+    border-bottom: 1px solid #edf0f4;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 15px;
+
+}
+
+
+.search-box {
+
+    width: 350px;
+
+    height: 42px;
+
+    border: 1px solid #dfe3ea;
+
+    border-radius: 9px;
+
+    display: flex;
+
+    align-items: center;
+
+    padding: 0 13px;
+
+    gap: 9px;
+
+}
+
+
+.search-box span {
+
+    font-size: 15px;
+
+}
+
+
+.search-box input {
+
+    border: none;
+
+    outline: none;
+
+    width: 100%;
+
+    font-size: 13px;
+
+}
+
+
+.toolbar-right {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+}
+
+
+.toolbar-right select {
+
+    height: 42px;
+
+    border: 1px solid #dfe3ea;
+
+    border-radius: 9px;
+
+    padding: 0 12px;
+
+    outline: none;
+
+    background: white;
+
+}
+
+
+.refresh-btn {
+
+    height: 42px;
+
+    border: 1px solid #dfe3ea;
+
+    background: white;
+
+    border-radius: 9px;
+
+    padding: 0 14px;
+
+    cursor: pointer;
+
+    font-weight: 600;
+
+}
+
+
+.refresh-btn:hover {
+
+    background: #f7f8fa;
+
+}
+
+
+/* =========================================
+   TABLE
+========================================= */
+
+.table-wrapper {
+
+    width: 100%;
+
+    overflow-x: auto;
+
+}
+
+
+table {
+
+    width: 100%;
+
+    border-collapse: collapse;
+
+}
+
+
+thead {
+
+    background: #f8fafc;
+
+}
+
+
+th {
+
+    text-align: left;
+
+    padding: 15px 18px;
+
+    font-size: 11px;
+
+    color: #6b7280;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.5px;
+
+    white-space: nowrap;
+
+}
+
+
+td {
+
+    padding: 17px 18px;
+
+    border-top: 1px solid #edf0f4;
+
+    font-size: 13px;
+
+    white-space: nowrap;
+
+}
+
+
+.route-name {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+}
+
+
+.route-icon {
+
+    width: 36px;
+
+    height: 36px;
+
+    border-radius: 9px;
+
+    background: #edf4ff;
+
+    color: #2563eb;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-weight: 700;
+
+}
+
+
+.route-origin {
+
+    font-weight: 700;
+
+}
+
+
+.route-destination {
+
+    color: #6b7280;
+
+    font-size: 12px;
+
+    margin-top: 3px;
+
+}
+
+
+.status-badge {
+
+    display: inline-flex;
+
+    padding: 5px 9px;
+
+    border-radius: 20px;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+}
+
+
+.status-active {
+
+    background: #eaf8ef;
+
+    color: #15803d;
+
+}
+
+
+.status-inactive {
+
+    background: #fff0f0;
+
+    color: #dc2626;
+
+}
+
+
+.action-buttons {
+
+    display: flex;
+
+    gap: 7px;
+
+}
+
+
+.action-btn {
+
+    width: 34px;
+
+    height: 34px;
+
+    border-radius: 8px;
+
+    border: 1px solid #e3e7ed;
+
+    background: white;
+
+    cursor: pointer;
+
+}
+
+
+.action-btn:hover {
+
+    background: #f5f7fb;
+
+}
+
+
+/* =========================================
+   LOADING
+========================================= */
+
+.loading-cell {
+
+    text-align: center;
+
+    padding: 45px;
+
+    color: #6b7280;
+
+}
+
+
+/* =========================================
+   EMPTY
+========================================= */
+
+.empty-state {
+
+    text-align: center;
+
+    padding: 55px 20px;
+
+}
+
+
+.empty-icon {
+
+    width: 60px;
+
+    height: 60px;
+
+    margin: 0 auto 15px;
+
+    border-radius: 50%;
+
+    background: #edf4ff;
+
+    color: #2563eb;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 25px;
+
+}
+
+
+.empty-state h3 {
+
+    font-size: 17px;
+
+    margin-bottom: 6px;
+
+}
+
+
+.empty-state p {
+
+    color: #6b7280;
+
+    font-size: 13px;
+
+}
+
+
+/* =========================================
+   MODAL
+========================================= */
+
+.modal-overlay {
+
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(15, 23, 42, 0.55);
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+
+    z-index: 1000;
+
+}
+
+
+.modal-overlay.active {
+
+    display: flex;
+
+}
+
+
+.route-modal {
+
+    width: 100%;
+
+    max-width: 650px;
+
+    background: white;
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,0.18);
+
+    overflow: hidden;
+
+}
+
+
+.modal-header {
+
+    padding: 24px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+
+    border-bottom: 1px solid #edf0f4;
+
+}
+
+
+.modal-label {
+
+    color: #2563eb;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+}
+
+
+.modal-header h2 {
+
+    margin-top: 5px;
+
+    font-size: 21px;
+
+}
+
+
+.modal-header p {
+
+    margin-top: 5px;
+
+    color: #6b7280;
+
+    font-size: 12px;
+
+}
+
+
+.close-modal {
+
+    width: 34px;
+
+    height: 34px;
+
+    border: none;
+
+    background: #f4f6f8;
+
+    border-radius: 8px;
+
+    font-size: 22px;
+
+    cursor: pointer;
+
+}
+
+
+.form-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 18px;
+
+    padding: 24px;
+
+}
+
+
+.form-group label {
+
+    display: block;
+
+    margin-bottom: 7px;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+}
+
+
+.form-group input,
+.form-group select {
+
+    width: 100%;
+
+    height: 43px;
+
+    border: 1px solid #dfe3ea;
+
+    border-radius: 8px;
+
+    padding: 0 12px;
+
+    outline: none;
+
+    font-size: 13px;
+
+}
+
+
+.form-group input:focus,
+.form-group select:focus {
+
+    border-color: #2563eb;
+
+}
+
+
+.form-message {
+
+    margin: 0 24px;
+
+    font-size: 12px;
+
+}
+
+
+.form-message.error {
+
+    color: #dc2626;
+
+}
+
+
+.form-message.success {
+
+    color: #15803d;
+
+}
+
+
+.modal-actions {
+
+    padding: 20px 24px;
+
+    border-top: 1px solid #edf0f4;
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 10px;
+
+}
+
+
+.cancel-btn,
+.save-btn {
+
+    height: 42px;
+
+    padding: 0 18px;
+
+    border-radius: 8px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+}
+
+
+.cancel-btn {
+
+    background: white;
+
+    border: 1px solid #dfe3ea;
+
+}
+
+
+.save-btn {
+
+    border: none;
+
+    background: #2563eb;
+
+    color: white;
+
+}
+
+
+.save-btn:hover {
+
+    background: #1d4ed8;
+
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 1000px) {
+
+    .statistics-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .routes-page {
+
+        padding: 18px;
+
+    }
+
+
+    .page-header {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 15px;
+
+    }
+
+
+    .statistics-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .routes-toolbar {
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+    }
+
+
+    .search-box {
+
+        width: 100%;
+
+    }
+
+
+    .toolbar-right {
+
+        justify-content: space-between;
+
+    }
+
+
+    .form-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}
+
+/* =========================================
+   EDIT MODAL
+========================================= */
+
+#editRouteModal {
+
+    display: none;
+
+}
+
+
+#editRouteModal.active {
+
+    display: flex;
+
+}
+
+/* =========================================
+   DELETE MODAL
+========================================= */
+
+.delete-modal {
+
+    width: 100%;
+
+    max-width: 430px;
+
+    background: white;
+
+    border-radius: 16px;
+
+    padding: 30px;
+
+    text-align: center;
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.18);
+
+}
+
+
+.delete-icon {
+
+    width: 58px;
+
+    height: 58px;
+
+    margin: 0 auto 16px;
+
+    border-radius: 50%;
+
+    background: #fff0f0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 24px;
+
+}
+
+
+.delete-modal h2 {
+
+    font-size: 21px;
+
+    margin-bottom: 8px;
+
+}
+
+
+.delete-modal > p {
+
+    color: #6b7280;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+
+}
+
+
+.delete-route-preview {
+
+    margin-top: 18px;
+
+    padding: 13px;
+
+    background: #f8fafc;
+
+    border-radius: 9px;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+}
+
+
+.delete-warning {
+
+    margin-top: 12px;
+
+    color: #dc2626;
+
+    font-size: 11px;
+
+}
+
+
+.delete-actions {
+
+    display: flex;
+
+    gap: 10px;
+
+    margin-top: 24px;
+
+}
+
+
+.cancel-delete-btn,
+.confirm-delete-btn {
+
+    flex: 1;
+
+    height: 43px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-weight: 600;
+
+}
+
+
+.cancel-delete-btn {
+
+    background: white;
+
+    border: 1px solid #dfe3ea;
+
+}
+
+
+.confirm-delete-btn {
+
+    border: none;
+
+    background: #dc2626;
+
+    color: white;
+
+}
+
+
+.confirm-delete-btn:hover {
+
+    background: #b91c1c;
+
+}
+
+
+.confirm-delete-btn:disabled {
+
+    opacity: 0.6;
+
+    cursor: not-allowed;
+
+}

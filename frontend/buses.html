@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Bus Management | TransitPro</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/buses.css"
+    >
+
+</head>
+
+<body>
+
+    <div class="app-layout">
+
+
+        <!-- ================================
+             SIDEBAR
+        ================================= -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-brand">
+
+                <div class="sidebar-logo">
+                    🚌
+                </div>
+
+                <div>
+                    <h2>TransitPro</h2>
+                    <span>Management System</span>
+                </div>
+
+            </div>
+
+
+            <nav class="sidebar-nav">
+
+                <a href="dashboard.html">
+                    <span>⌂</span>
+                    Dashboard
+                </a>
+
+                <a href="bookings.html">
+                    <span>🎫</span>
+                    Bookings
+                </a>
+
+                <a
+                    href="buses.html"
+                    class="active"
+                >
+                    <span>🚌</span>
+                    Buses
+                </a>
+
+                <a href="routes.html">
+                    <span>🛣️</span>
+                    Routes
+                </a>
+
+                <a href="trips.html">
+                    <span>📅</span>
+                    Trips
+                </a>
+
+                <a href="drivers.html">
+                    <span>👨‍✈️</span>
+                    Drivers
+                </a>
+
+                <a href="passengers.html">
+                    <span>👥</span>
+                    Passengers
+                </a>
+
+                <a href="payment.html">
+                    <span>💳</span>
+                    Payments
+                </a>
+
+                <a href="reports.html">
+                    <span>📊</span>
+                    Reports
+                </a>
+
+                <div class="sidebar-divider"></div>
+
+                <a href="settings.html">
+                    <span>⚙️</span>
+                    Settings
+                </a>
+
+            </nav>
+
+
+            <button
+                class="sidebar-logout"
+                id="logoutButton"
+            >
+                <span>↪</span>
+                Logout
+            </button>
+
+        </aside>
+
+
+        <!-- ================================
+             MAIN CONTENT
+        ================================= -->
+
+        <main class="main-content">
+
+
+            <!-- Top Header -->
+
+            <header class="top-header">
+
+                <div class="mobile-menu">
+                    ☰
+                </div>
+
+                <div class="page-title">
+
+                    <h1>Bus Management</h1>
+
+                    <p>
+                        Manage your fleet and bus information.
+                    </p>
+
+                </div>
+
+
+                <div class="header-actions">
+
+                    <button class="notification-button">
+                        🔔
+                        <span></span>
+                    </button>
+
+                    <div class="user-profile">
+
+                        <div class="user-avatar">
+                            SA
+                        </div>
+
+                        <div class="user-info">
+
+                            <strong id="userName">
+                                Administrator
+                            </strong>
+
+                            <small>
+                                Administrator
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- Page Body -->
+
+            <section class="page-body">
+
+
+                <!-- Statistics -->
+
+                <div class="bus-statistics">
+
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon total">
+                            🚌
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Total Buses
+                            </span>
+
+                            <strong id="totalBuses">
+                                0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon available">
+                            ✓
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Available
+                            </span>
+
+                            <strong id="availableBuses">
+                                0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon trip">
+                            🛣️
+                        </div>
+
+                        <div>
+
+                            <span>
+                                On Trip
+                            </span>
+
+                            <strong id="tripBuses">
+                                0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon maintenance">
+                            🔧
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Maintenance
+                            </span>
+
+                            <strong id="maintenanceBuses">
+                                0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Bus Table Card -->
+
+                <div class="content-card">
+
+
+                    <div class="content-card-header">
+
+                        <div>
+
+                            <h2>All Buses</h2>
+
+                            <p>
+                                View and manage your transport fleet.
+                            </p>
+
+                        </div>
+
+                        <button
+                            class="primary-button"
+                            id="openAddBus"
+                        >
+                            <span>+</span>
+                            Add New Bus
+                        </button>
+
+                    </div>
+
+
+                    <!-- Toolbar -->
+
+                    <div class="table-toolbar">
+
+                        <div class="search-box">
+
+                            <span>⌕</span>
+
+                            <input
+                                type="search"
+                                id="searchBus"
+                                placeholder="Search bus number or plate..."
+                            >
+
+                        </div>
+
+
+                        <select
+                            id="statusFilter"
+                            class="status-filter"
+                        >
+
+                            <option value="all">
+                                All Status
+                            </option>
+
+                            <option value="available">
+                                Available
+                            </option>
+
+                            <option value="on_trip">
+                                On Trip
+                            </option>
+
+                            <option value="maintenance">
+                                Maintenance
+                            </option>
+
+                            <option value="inactive">
+                                Inactive
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Table -->
+
+                    <div class="table-container">
+
+                        <table class="bus-table">
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>Bus</th>
+
+                                    <th>Plate Number</th>
+
+                                    <th>Type</th>
+
+                                    <th>Seats</th>
+
+                                    <th>Status</th>
+
+                                    <th>Added</th>
+
+                                    <th>Action</th>
+
+                                </tr>
+
+                            </thead>
+
+                            <tbody id="busTableBody">
+
+                            </tbody>
+
+                        </table>
+
+
+                        <!-- Loading -->
+
+                        <div
+                            class="table-state"
+                            id="loadingState"
+                        >
+
+                            <div class="loading-spinner"></div>
+
+                            <p>
+                                Loading buses...
+                            </p>
+
+                        </div>
+
+
+                        <!-- Empty -->
+
+                        <div
+                            class="table-state"
+                            id="emptyState"
+                        >
+
+                            <div class="empty-icon">
+                                🚌
+                            </div>
+
+                            <h3>
+                                No buses found
+                            </h3>
+
+                            <p>
+                                Add your first bus to start managing your fleet.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- ================================
+         ADD / EDIT BUS MODAL
+    ================================= -->
+
+    <div
+        class="modal-overlay"
+        id="busModal"
+    >
+
+        <div class="modal">
+
+
+            <div class="modal-header">
+
+                <div>
+
+                    <span class="modal-label">
+                        FLEET MANAGEMENT
+                    </span>
+
+                    <h2 id="modalTitle">
+                        Add New Bus
+                    </h2>
+
+                </div>
+
+                <button
+                    class="modal-close"
+                    id="closeBusModal"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <form id="busForm">
+
+
+                <input
+                    type="hidden"
+                    id="busId"
+                >
+
+
+                <div class="form-grid">
+
+
+                    <div class="form-field">
+
+                        <label>
+                            Bus Number
+                        </label>
+
+                        <input
+                            type="text"
+                            id="busNumber"
+                            placeholder="e.g. BUS-002"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-field">
+
+                        <label>
+                            Plate Number
+                        </label>
+
+                        <input
+                            type="text"
+                            id="plateNumber"
+                            placeholder="e.g. KAN-456-AB"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-field">
+
+                        <label>
+                            Bus Type
+                        </label>
+
+                        <select
+                            id="busType"
+                            required
+                        >
+
+                            <option value="">
+                                Select bus type
+                            </option>
+
+                            <option value="Luxury">
+                                Luxury
+                            </option>
+
+                            <option value="Executive">
+                                Executive
+                            </option>
+
+                            <option value="Standard">
+                                Standard
+                            </option>
+
+                            <option value="Mini Bus">
+                                Mini Bus
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-field">
+
+                        <label>
+                            Total Seats
+                        </label>
+
+                        <input
+                            type="number"
+                            id="totalSeats"
+                            min="1"
+                            max="100"
+                            placeholder="e.g. 50"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div
+                        class="form-field"
+                        id="statusField"
+                    >
+
+                        <label>
+                            Status
+                        </label>
+
+                        <select id="busStatus">
+
+                            <option value="available">
+                                Available
+                            </option>
+
+                            <option value="on_trip">
+                                On Trip
+                            </option>
+
+                            <option value="maintenance">
+                                Maintenance
+                            </option>
+
+                            <option value="inactive">
+                                Inactive
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <div class="modal-actions">
+
+                    <button
+                        type="button"
+                        class="secondary-button"
+                        id="cancelBus"
+                    >
+                        Cancel
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="primary-button"
+                        id="saveBus"
+                    >
+                        Save Bus
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- Notification -->
+
+    <div
+        id="toast"
+        class="toast"
+    ></div>
+
+
+    <script src="js/api.js"></script>
+    <script src="js/buses.js"></script>
+
+</body>
+
+</html>

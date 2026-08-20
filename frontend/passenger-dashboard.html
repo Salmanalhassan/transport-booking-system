@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Passenger Dashboard | TransitPro
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/passenger-dashboard.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- ==========================================
+         SIDEBAR
+    =========================================== -->
+
+    <aside
+        class="passenger-sidebar"
+        id="passengerSidebar"
+    >
+
+        <div class="sidebar-brand">
+
+            <div class="sidebar-brand-icon">
+                🚌
+            </div>
+
+            <div>
+
+                <h2>
+                    TransitPro
+                </h2>
+
+                <span>
+                    Passenger Portal
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- Navigation -->
+
+        <nav class="passenger-nav">
+
+            <a
+                href="passenger-dashboard.html"
+                class="nav-item active"
+            >
+
+                <span class="nav-icon">
+                    🏠
+                </span>
+
+                <span>
+                    Dashboard
+                </span>
+
+            </a>
+
+
+            <a
+                href="passenger-routes.html"
+                class="nav-item"
+            >
+
+                <span class="nav-icon">
+                    🗺️
+                </span>
+
+                <span>
+                    View Routes
+                </span>
+
+            </a>
+
+
+            <a
+                href="passenger-bookings.html"
+                class="nav-item"
+            >
+
+                <span class="nav-icon">
+                    🎫
+                </span>
+
+                <span>
+                    My Bookings
+                </span>
+
+            </a>
+
+
+            <a
+                href="passenger-payment.html"
+                class="nav-item"
+            >
+
+                <span class="nav-icon">
+                    💳
+                </span>
+
+                <span>
+                    Payments
+                </span>
+
+            </a>
+
+
+            <a
+                href="passenger-profile.html"
+                class="nav-item"
+            >
+
+                <span class="nav-icon">
+                    👤
+                </span>
+
+                <span>
+                    My Profile
+                </span>
+
+            </a>
+
+        </nav>
+
+
+        <!-- Sidebar Bottom -->
+
+        <div class="sidebar-bottom">
+
+            <button
+                type="button"
+                id="logoutButton"
+                class="logout-button"
+            >
+
+                <span>
+                    🚪
+                </span>
+
+                <span>
+                    Logout
+                </span>
+
+            </button>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- ==========================================
+         MAIN CONTENT
+    =========================================== -->
+
+    <main class="passenger-main">
+
+
+        <!-- ======================================
+             TOPBAR
+        ======================================= -->
+
+        <header class="passenger-topbar">
+
+            <div class="topbar-left">
+
+                <button
+                    type="button"
+                    id="menuButton"
+                    class="menu-button"
+                    aria-label="Open menu"
+                >
+                    ☰
+                </button>
+
+                <div>
+
+                    <span class="page-label">
+                        PASSENGER PORTAL
+                    </span>
+
+                    <h1>
+                        Dashboard
+                    </h1>
+
+                </div>
+
+            </div>
+
+
+            <div class="topbar-right">
+
+                <div class="notification-button">
+                    🔔
+                </div>
+
+
+                <div class="user-area">
+
+                    <div
+                        class="user-avatar"
+                        id="userAvatar"
+                    >
+                        U
+                    </div>
+
+                    <div class="user-details">
+
+                        <strong id="userName">
+                            Passenger
+                        </strong>
+
+                        <span id="userPhone">
+                            —
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- ======================================
+             PAGE CONTENT
+        ======================================= -->
+
+        <section class="passenger-content">
+
+
+            <!-- ==================================
+                 WELCOME CARD
+            =================================== -->
+
+            <div class="welcome-card">
+
+                <div class="welcome-content">
+
+                    <span class="welcome-label">
+                        WELCOME BACK 👋
+                    </span>
+
+                    <h2 id="welcomeName">
+                        Welcome, Passenger
+                    </h2>
+
+                    <p>
+                        Book your next journey,
+                        manage your tickets and
+                        check your travel information
+                        from one place.
+                    </p>
+
+
+                    <div class="welcome-actions">
+
+                        <a
+                            href="passenger-routes.html"
+                            class="primary-button"
+                        >
+                            🚌 Find a Trip
+                        </a>
+
+                        <a
+                            href="passenger-bookings.html"
+                            class="secondary-button"
+                        >
+                            🎫 My Bookings
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="welcome-illustration">
+
+                    <div class="bus-circle">
+                        🚌
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ==================================
+                 STATISTICS
+            =================================== -->
+
+            <div class="stats-grid">
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon purple">
+                        🎫
+                    </div>
+
+                    <div class="stat-information">
+
+                        <span>
+                            Total Bookings
+                        </span>
+
+                        <strong id="totalBookings">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon green">
+                        ✓
+                    </div>
+
+                    <div class="stat-information">
+
+                        <span>
+                            Confirmed Trips
+                        </span>
+
+                        <strong id="confirmedBookings">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon orange">
+                        ⏳
+                    </div>
+
+                    <div class="stat-information">
+
+                        <span>
+                            Pending Payments
+                        </span>
+
+                        <strong id="pendingPayments">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon blue">
+                        🚌
+                    </div>
+
+                    <div class="stat-information">
+
+                        <span>
+                            Upcoming Trips
+                        </span>
+
+                        <strong id="upcomingTrips">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ==================================
+                 TWO COLUMN SECTION
+            =================================== -->
+
+            <div class="dashboard-grid">
+
+
+                <!-- =================================
+                     UPCOMING TRIP
+                ================================== -->
+
+                <div class="dashboard-card upcoming-card">
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <span class="card-label">
+                                NEXT JOURNEY
+                            </span>
+
+                            <h3>
+                                Upcoming Trip
+                            </h3>
+
+                        </div>
+
+                        <a
+                            href="passenger-bookings.html"
+                        >
+                            View All
+                        </a>
+
+                    </div>
+
+
+                    <div
+                        id="upcomingTrip"
+                        class="upcoming-trip"
+                    >
+
+                        <div class="empty-trip">
+
+                            <div class="empty-icon">
+                                🚌
+                            </div>
+
+                            <h4>
+                                No upcoming trip
+                            </h4>
+
+                            <p>
+                                You don't have any
+                                upcoming journey yet.
+                            </p>
+
+                            <a
+                                href="passenger-routes.html"
+                                class="small-button"
+                            >
+                                Find a Trip
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================
+                     QUICK ACTIONS
+                ================================== -->
+
+                <div class="dashboard-card">
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <span class="card-label">
+                                QUICK ACCESS
+                            </span>
+
+                            <h3>
+                                Quick Actions
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="quick-actions">
+
+
+                        <a
+                            href="passenger-routes.html"
+                            class="quick-action"
+                        >
+
+                            <span class="quick-icon purple">
+                                🚌
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    Book a Ticket
+                                </strong>
+
+                                <span>
+                                    Find available trips
+                                </span>
+
+                            </div>
+
+                            <span class="arrow">
+                                →
+                            </span>
+
+                        </a>
+
+
+                        <a
+                            href="passenger-bookings.html"
+                            class="quick-action"
+                        >
+
+                            <span class="quick-icon green">
+                                🎫
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    My Bookings
+                                </strong>
+
+                                <span>
+                                    View your tickets
+                                </span>
+
+                            </div>
+
+                            <span class="arrow">
+                                →
+                            </span>
+
+                        </a>
+
+
+                        <a
+                            href="passenger-payment.html"
+                            class="quick-action"
+                        >
+
+                            <span class="quick-icon orange">
+                                💳
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    Make Payment
+                                </strong>
+
+                                <span>
+                                    Pay for your booking
+                                </span>
+
+                            </div>
+
+                            <span class="arrow">
+                                →
+                            </span>
+
+                        </a>
+
+
+                        <a
+                            href="passenger-profile.html"
+                            class="quick-action"
+                        >
+
+                            <span class="quick-icon blue">
+                                👤
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    My Profile
+                                </strong>
+
+                                <span>
+                                    Manage your information
+                                </span>
+
+                            </div>
+
+                            <span class="arrow">
+                                →
+                            </span>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ==================================
+                 RECENT BOOKINGS
+            =================================== -->
+
+            <div class="dashboard-card recent-bookings-card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <span class="card-label">
+                            TRAVEL HISTORY
+                        </span>
+
+                        <h3>
+                            Recent Bookings
+                        </h3>
+
+                    </div>
+
+                    <a
+                        href="passenger-bookings.html"
+                    >
+                        View All
+                    </a>
+
+                </div>
+
+
+                <div class="table-wrapper">
+
+                    <table class="booking-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Booking Reference
+                                </th>
+
+                                <th>
+                                    Route
+                                </th>
+
+                                <th>
+                                    Date
+                                </th>
+
+                                <th>
+                                    Seat
+                                </th>
+
+                                <th>
+                                    Amount
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody
+                            id="recentBookingsBody"
+                        >
+
+                            <tr>
+
+                                <td
+                                    colspan="6"
+                                    class="table-loading"
+                                >
+                                    Loading bookings...
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ==================================
+                 INFORMATION
+            =================================== -->
+
+            <div class="info-grid">
+
+
+                <div class="info-card">
+
+                    <div class="info-icon">
+                        🔒
+                    </div>
+
+                    <div>
+
+                        <h4>
+                            Secure Booking
+                        </h4>
+
+                        <p>
+                            Your personal information
+                            and booking details are
+                            protected.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="info-card">
+
+                    <div class="info-icon">
+                        💳
+                    </div>
+
+                    <div>
+
+                        <h4>
+                            Easy Payments
+                        </h4>
+
+                        <p>
+                            Pay securely for your
+                            tickets online.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="info-card">
+
+                    <div class="info-icon">
+                        📱
+                    </div>
+
+                    <div>
+
+                        <h4>
+                            Easy Access
+                        </h4>
+
+                        <p>
+                            Manage your trips from
+                            any device.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ======================================
+             FOOTER
+        ======================================= -->
+
+        <footer class="passenger-footer">
+
+            <p>
+                © 2026 TransitPro Transport Booking
+                Management System
+            </p>
+
+            <span>
+                Passenger Portal
+            </span>
+
+        </footer>
+
+
+    </main>
+
+
+
+    <!-- ==========================================
+         MOBILE OVERLAY
+    =========================================== -->
+
+    <div
+        class="sidebar-overlay"
+        id="sidebarOverlay"
+    ></div>
+
+
+
+    <!-- ==========================================
+         JAVASCRIPT
+    =========================================== -->
+
+    <script src="js/api.js"></script>
+
+    <script src="js/passenger-dashboard.js"></script>
+
+
+</body>
+
+</html>
+
