@@ -7,7 +7,7 @@ const {
     createBooking,
     updateBooking,
     deleteBooking
-} = require("../controllers/bookingController");
+} = require("../controllers/bookingcontroller");
 
 const {
     protect,
