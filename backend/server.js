@@ -8,10 +8,10 @@ const testRoutes = require("./routes/testRoutes");
 const dashboardRoutes = require("./routes/dashboardRoutes");
 const busRoutes = require("./routes/busRoutes");
 const bookingRoutes = require("./routes/bookingroutes");
-const passengerRoutes = require("./routes/passengerRoutes");
-const tripRoutes = require("./routes/tripRoutes");
-const routeRoutes = require("./routes/routeRoutes");
-const driverRoutes = require("./routes/driverRoutes");
+const passengerRoutes = require("./routes/passengerroutes");
+const tripRoutes = require("./routes/triproutes");
+const routeRoutes = require("./routes/routeroutes");
+const driverRoutes = require("./routes/driverroutes");
 const paymentRoutes = require("./routes/paymentroutes");
 const userRoutes = require("./routes/userroutes");
 

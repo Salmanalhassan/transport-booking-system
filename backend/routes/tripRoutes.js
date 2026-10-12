@@ -11,7 +11,7 @@ const {
     createTrip,
     updateTrip,
     deleteTrip
-} = require("../controllers/tripController");
+} = require("../controllers/tripcontroller");
 
 
 // ==========================================
@@ -21,7 +21,7 @@ const {
 const {
     protect,
     adminOnly
-} = require("../middleware/authMiddleware");
+} = require("../middleware/authmiddleware");
 
 
 // ==========================================

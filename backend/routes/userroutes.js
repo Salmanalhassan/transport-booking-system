@@ -2,11 +2,11 @@ const express = require("express");
 
 const {
     changePassword
-} = require("../controllers/userController");
+} = require("../controllers/usercontroller");
 
 const {
     protect
-} = require("../middleware/authMiddleware");
+} = require("../middleware/authmiddleware");
 
 const router = express.Router();
 

@@ -8,13 +8,13 @@ const {
     getAllPayments,
     getPaymentById,
     getPaymentReceipt
-} = require("../controllers/paymentController");
+} = require("../controllers/paymentcontroller");
 const {
     protect,
     adminOnly,
     passengerOnly,
     adminOrPassenger
-} = require("../middleware/authMiddleware");
+} = require("../middleware/authmiddleware");
 
 const router = express.Router();
 

@@ -8,14 +8,14 @@ const {
     updateRoute,
     deleteRoute
 } = require(
-    "../controllers/routeController"
+    "../controllers/routecontroller"
 );
 
 const {
     protect,
     adminOnly
 } = require(
-    "../middleware/authMiddleware"
+    "../middleware/authmiddleware"
 );
 
 

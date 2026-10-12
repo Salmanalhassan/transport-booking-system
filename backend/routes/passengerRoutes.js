@@ -5,13 +5,13 @@ const {
     createPassenger,
     updatePassenger,
     deletePassenger
-} = require("../controllers/passengerController");
+} = require("../controllers/passengercontroller");
 
 const {
     protect,
     adminOnly,
     adminOrStaff
-} = require("../middleware/authMiddleware");
+} = require("../middleware/authmiddleware");
 
 const db = require("../config/db");
 
