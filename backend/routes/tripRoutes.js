@@ -11,7 +11,7 @@ const {
     createTrip,
     updateTrip,
     deleteTrip
-} = require("../controllers/tripcontroller");
+} = require("../controllers/tripController");
 
 
 // ==========================================
