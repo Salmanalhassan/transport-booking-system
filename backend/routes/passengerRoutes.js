@@ -5,7 +5,7 @@ const {
     createPassenger,
     updatePassenger,
     deletePassenger
-} = require("../controllers/passengercontroller");
+} = require("../controllers/passengerController");
 
 const {
     protect,
