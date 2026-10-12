@@ -6,12 +6,12 @@ const {
     createBus,
     updateBus,
     deleteBus
-} = require("../controllers/busController");
+} = require("../controllers/buscontroller");
 
 const {
     protect,
     adminOnly
-} = require("../middleware/authMiddleware");
+} = require("../middleware/authmiddleware");
 
 const router = express.Router();
 

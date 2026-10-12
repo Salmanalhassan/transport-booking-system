@@ -1,18 +1,18 @@
- const express = require("express");
+
+const express = require("express");
 
 const {
     getDashboardStats,
     getRecentBookings,
     getUpcomingTrips
-} = require("../controllers/dashboardController");
+} = require("../controllers/dashboardcontroller");
 
 const {
     protect,
     adminOnly
-} = require("../middleware/authMiddleware");
+} = require("../middleware/authmiddleware");
 
 const router = express.Router();
-
 
 // Dashboard statistics
 router.get(
@@ -22,7 +22,6 @@ router.get(
     getDashboardStats
 );
 
-
 // Recent bookings
 router.get(
     "/recent-bookings",
@@ -31,7 +30,6 @@ router.get(
     getRecentBookings
 );
 
-
 // Upcoming trips
 router.get(
     "/upcoming-trips",
@@ -39,6 +37,5 @@ router.get(
     adminOnly,
     getUpcomingTrips
 );
-
 
 module.exports = router;
