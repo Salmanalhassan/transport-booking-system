@@ -6,7 +6,7 @@ const {
     createBus,
     updateBus,
     deleteBus
-} = require("../controllers/buscontroller");
+} = require("../controllers/busController");
 
 const {
     protect,
