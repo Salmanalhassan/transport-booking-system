@@ -13,7 +13,7 @@ const {
     protect,
     adminOnly,
     passengerOnly
-} = require("../middleware/authMiddleware");
+} = require("../middleware/authmiddleware");
 
 const router = express.Router();
 
