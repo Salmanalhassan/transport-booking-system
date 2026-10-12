@@ -6,7 +6,7 @@ const {
     createDriver,
     updateDriver,
     deleteDriver
-} = require("../controllers/driverController");
+} = require("../controllers/drivercontroller");
 // ==========================================
 // GET ALL DRIVERS
 // GET /api/drivers
