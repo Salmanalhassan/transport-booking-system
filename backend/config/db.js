@@ -26,7 +26,7 @@ async function testDatabaseConnection() {
         connection = await pool.getConnection();
         console.log("MySQL database connected successfully");
     } catch (error) {
-        console.error("MySQL connection failed:", error.message);
+        console.error("MySQL connection failed:", error);
     } finally {
         if (connection) {
             connection.release();
