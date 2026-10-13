@@ -258,8 +258,9 @@ const [bookings] =
                 currency:
                     "NGN",
 
-                     callback_url:
-        "http://127.0.0.1:5500/frontend/passenger-bookings.html",
+callback_url:
+    "https://transport-booking-system-jz2z.onrender.com/frontend/passenger-bookings.html",
+
 
                  metadata: {
 
@@ -2060,8 +2061,8 @@ if (userRole === "admin") {
                         currency:
                             "NGN",
 
-                        callback_url:
-                            "http://127.0.0.1:5500/frontend/admin-payments.html",
+callback_url:
+    "https://transport-booking-system-jz2z.onrender.com/frontend/admin-payments.html",
 
                         metadata: {
 
