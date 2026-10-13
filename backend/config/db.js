@@ -1,3 +1,4 @@
+
 const mysql = require("mysql2/promise");
 require("dotenv").config();
 
@@ -6,7 +7,12 @@ const pool = mysql.createPool({
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
-    port: process.env.DB_PORT,
+    port: Number(process.env.DB_PORT),
+
+    // Use TLS for the Aiven database connection.
+    ssl: {
+        minVersion: "TLSv1.2"
+    },
 
     waitForConnections: true,
     connectionLimit: 10,
@@ -14,14 +20,17 @@ const pool = mysql.createPool({
 });
 
 async function testDatabaseConnection() {
+    let connection;
+
     try {
-        const connection = await pool.getConnection();
-
+        connection = await pool.getConnection();
         console.log("MySQL database connected successfully");
-
-        connection.release();
     } catch (error) {
         console.error("MySQL connection failed:", error.message);
+    } finally {
+        if (connection) {
+            connection.release();
+        }
     }
 }
 
