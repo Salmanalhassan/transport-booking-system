@@ -259,7 +259,7 @@ const [bookings] =
                     "NGN",
 
 callback_url:
-    "https://transport-booking-system-jz2z.onrender.com/frontend/passenger-bookings.html",
+    "https://transport-booking-system-jz2z.onrender.com/passenger-bookings.html",
 
 
                  metadata: {
@@ -2062,7 +2062,7 @@ if (userRole === "admin") {
                             "NGN",
 
 callback_url:
-    "https://transport-booking-system-jz2z.onrender.com/frontend/admin-payments.html",
+    "https://transport-booking-system-jz2z.onrender.com/admin-payments.html",
 
                         metadata: {
 
