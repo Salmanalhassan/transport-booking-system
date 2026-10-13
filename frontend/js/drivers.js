@@ -2,7 +2,7 @@
 // DRIVERS PAGE JAVASCRIPT
 // ==========================================
 
-const API_URL = "http://localhost:5000/api/drivers";
+const API_URL = "/api/drivers";
 
 let drivers = [];
 let editingDriverId = null;
